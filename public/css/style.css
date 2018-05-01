@@ -110,3 +110,49 @@
   color: white;
   background-color: #7097AD;/*bleu-gris*/
 }
+
+.supprimer
+{
+  border: 2px #7097AD solid;
+  background-color: #0F5F81;/*bleu-fonce*/
+  color: white;
+  float: left;
+}
+
+.ajouter
+{
+  border: 2px #7097AD solid;
+  background-color: #0F5F81;/*bleu-fonce*/
+  color: white;
+  float: right;
+
+}
+
+.option-ajouter
+{
+  border: 2px #7097AD solid;
+  background-color: #0F5F81;/*bleu-fonce*/
+  height: 800px;
+}
+
+.option-supprimer
+{
+  border: 2px #7097AD solid;
+  background-color: #0F5F81;/*bleu-fonce*/
+  height: 800px;
+}
+
+.option-1
+{
+  float: right;
+  border: 1px #7097AD solid;
+  background-color: white;
+  height: 263px;
+
+}
+
+.option-2
+{
+  margin-top: 40px;
+
+}
