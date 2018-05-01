@@ -6,7 +6,7 @@
     <div class="navbar-header">
         <!-- Navbar en responsive -->
         <div class="navbar-brand">
-            <img src="../public/images/logo_netpool.png" class="img-responsive logo_netpool" alt="img logo_netpool" width="30">
+            <img src="../public/images/logo_texte_nav.png" class="img-responsive logo_netpool" alt="img logo_netpool" width="200">
         </div>
 
         <div>
@@ -47,7 +47,7 @@
           </li>
           <!-- Deconnexion -->
           <li>
-            <a class="mot_nav" href="#">Se déconnecter</a>
+            <a class="mot_nav" href="#">Se déconnecter <span class="glyphicon glyphicon-log-out"></span></a>
           </li>
         </ul>
       </div>

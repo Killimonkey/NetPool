@@ -96,3 +96,17 @@
   background-color: #0F5F81;/*bleu-fonce*/
   color: white;
 }
+
+.option_publier
+{
+  border: 1px solid #0F5F81;/*bleu-fonce*/
+  text-align: center;
+}
+
+.option_publier:hover
+{
+  border: 1px solid #0F5F81;/*bleu-fonce*/
+  text-align: center;
+  color: white;
+  background-color: #7097AD;/*bleu-gris*/
+}
