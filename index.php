@@ -38,7 +38,7 @@
 
           <!-- Texte droite -->
           <div class="col-sm-6">
-            <form id="mon_formulaire" action="" method="post">
+            <form id="mon_formulaire" action="pages/accueil.php" method="post">
 
               <!-- Adresse e-mail -->
               <div class="form-group">

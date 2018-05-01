@@ -1,3 +1,4 @@
+/*Inscription*/
 .bandeau_bleu
 {
   background-color: #0F5F81;/*bleu-fonce*/
@@ -56,7 +57,42 @@
 .bouton_valider_connexion2
 {
   color: white;
-  background-color: #0F5F81 !important;/*bleu-gris*/
+  background-color: #0F5F81 !important;/*bleu-fonce*/
   border: solid 1px #0F5F81 !important;
   margin-bottom: 30px !important;
+}
+
+/*Nav*/
+.navigation
+{
+  background-color: #0F5F81 !important;/*bleu-fonce*/
+}
+
+.mot_nav
+{
+  color: white !important;
+}
+
+.mot_nav:hover
+{
+    color: white !important;
+    background-color: #7097AD !important;/*bleu-gris*/
+}
+
+.logo_netpool
+{
+  margin-top: -10px;
+}
+
+/*Body*/
+.body
+{
+  margin-top: 100px;
+}
+
+/*Accueil*/
+.publier
+{
+  background-color: #0F5F81;/*bleu-fonce*/
+  color: white;
 }

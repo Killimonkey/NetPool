@@ -1,12 +1,12 @@
 <!-- Affichage de la nav -->
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top navigation">
 
   <div class="container-fluid">
     <!-- Logos -->
     <div class="navbar-header">
         <!-- Navbar en responsive -->
         <div class="navbar-brand">
-            <img src="../public/images/logo_netpool.png" class="img-responsive" alt="img logo_netpool" width="260">
+            <img src="../public/images/logo_netpool.png" class="img-responsive logo_netpool" alt="img logo_netpool" width="30">
         </div>
 
         <div>
@@ -23,19 +23,31 @@
         <ul class="nav navbar-nav">
           <!-- Lien vers l'accueil -->
           <li>
-            <a href="#">Accueil</a>
+            <a class="mot_nav" href="accueil.php">Accueil</a>
           </li>
           <!-- Lien vers mon profil -->
           <li>
-            <a href="#">Mon profil</a>
+            <a class="mot_nav" href="profil.php">Mon profil</a>
           </li>
           <!-- Lien vers mon reseau -->
           <li>
-            <a href="#">Notifications</a>
+            <a class="mot_nav" href="reseau.php">Mon réseau</a>
           </li>
           <!-- Lien vers notifications -->
           <li>
-            <a href="#">Offres d'emplois</a>
+            <a class="mot_nav" href="notifications.php">Notifications</a>
+          </li>
+          <!-- Lien vers offres d'emplois -->
+          <li>
+            <a class="mot_nav" href="emplois.php">Offres d'emplois</a>
+          </li>
+          <!-- Lien vers admin -->
+          <li>
+            <a class="mot_nav" href="admin.php">Admin</a>
+          </li>
+          <!-- Deconnexion -->
+          <li>
+            <a class="mot_nav" href="#">Se déconnecter</a>
           </li>
         </ul>
       </div>
