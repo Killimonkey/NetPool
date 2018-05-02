@@ -193,7 +193,8 @@
   height: 170px !important;
   width: 170px;
   border: 1px solid #0F5F81; /*bleu-fonce*/
-  margin-top: -85px
+  margin-top: -85px;
+  margin-bottom: 10px;
 }
 
 .notif
@@ -213,7 +214,42 @@
 .corps
 {
   float: right;
-  border: 2px #7097AD solid;/*bleu-fonce*/
+  border: 2px #7097AD solid;/*bleu-gris*/
   background-color: white;
   height: 800px;
+}
+
+.nom_job
+{
+  color: #0F5F81;/*bleu-fonce*/
+  text-align: center;
+}
+
+.profil
+{
+  background-color: #0F5F81;/*bleu-fonce*/
+  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.ma_publication
+{
+  border: 1px #0F5F81 solid;/*bleu-fonce*/
+}
+
+.parametres_profil
+{
+  color: white !important;
+  background-color: #0F5F81 !important;/*bleu-fonce*/
+  margin-bottom: 5px !important;
+  text-align: center;
+}
+
+.param_profil
+{
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
