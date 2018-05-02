@@ -28,19 +28,37 @@
     try
     {
       $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', '');
+
+      // Chercher si l'utilisateur existe déjà
+      $requete = $bdd->prepare('SELECT id_utilisateur FROM utilisateur WHERE adresse_mail = ? AND pseudo = ?');
+      $requete->execute(array($emailc, $pseudoc));
+      // Récupérer le résultat
+      $resultat = $requete->fetch();
+      // Récupérer l'id de l'utilisateur
+      $_SESSION['$id_utilisateur'] = $resultat[0];
+
+      // Chercher si l'utilisateur existe déjà
+      $requete = $bdd->prepare('SELECT nom_photo_couv FROM utilisateur WHERE id_utilisateur = ?');
+      $requete->execute(array($_SESSION['$id_utilisateur']));
+      // Récupérer le résultat
+      $resultat_1 = $requete->fetch();
+      // Récupérer l'id de l'utilisateur
+      $_SESSION['$couv_utilisateur'] = $resultat_1[0];
+
+      // Chercher si l'utilisateur existe déjà
+      $requete = $bdd->prepare('SELECT nom_photo_profil FROM utilisateur WHERE id_utilisateur = ?');
+      $requete->execute(array($_SESSION['$id_utilisateur']));
+      // Récupérer le résultat
+      $resultat_2 = $requete->fetch();
+      // Récupérer l'id de l'utilisateur
+      $_SESSION['$profil_utilisateur'] = $resultat_2[0];
+
+      $bdd = null;
     }
     catch (Exception $e)
     {
       die('Erreur : ' . $e->getMessage());
     }
-    // Chercher si l'utilisateur existe déjà
-    $requete = $bdd->prepare('SELECT id_utilisateur FROM utilisateur WHERE adresse_mail = ? AND pseudo = ?');
-    $requete->execute(array($emailc, $pseudoc));
-    // Récupérer le résultat
-    $resultat = $requete->fetch();
-
-    // Récupérer l'id de l'utilisateur
-    $_SESSION['$id_utilisateur'] = $resultat[0];
 
     // Si l'utilisateur n'existe pas, prévenir
     if($resultat == FALSE)

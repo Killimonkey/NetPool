@@ -15,11 +15,17 @@
       <div class="row">
 
         <!-- photo couv -->
-          <img src="../upload/couv/couverture.jpg" class="img-responsive img_couv" alt="img_couv">
+        <?php
+          $pc = $_SESSION['$couv_utilisateur'];
+          echo '<img src="../upload/couv/'.$pc.'" class="img-responsive img_couv" alt="img_couv">';
+        ?>
 
         <!-- pp -->
         <div class="col-sm-12">
-          <img src="../upload/pp/pp1.jpg" class="img-responsive img_pp" alt="img_pp">
+          <?php
+            $pp = $_SESSION['$profil_utilisateur'];
+            echo '<img src="../upload/pp/'.$pp.'" class="img-responsive img_pp" alt="img_pp">';
+          ?>
         </div>
       </div>
 
