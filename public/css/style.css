@@ -152,7 +152,7 @@
 .option-1
 {
   float: right;
-  border: 1px #7097AD solid;/*bleu-gris*/
+  border: 1px #7097AD solid;/*bleu-fonce*/
   background-color: white;
   height: 280px;
 
@@ -166,7 +166,22 @@
 
 .notif
 {
-  border: 2px #0F5F81 solid;/*bleu-gris*/
-  background-color: white;/*bleu-fonce*/
+  border: 2px #0F5F81 solid;/*bleu-fonce*/
+  background-color: white;
   height: 200px;
+}
+
+.titre
+{
+  border: 2px #7097AD solid;/*bleu-gris*/
+  background-color: #0F5F81;/*bleu-fonce*/
+  color: white;
+}
+
+.corps
+{
+  float: right;
+  border: 2px #7097AD solid;/*bleu-fonce*/
+  background-color: white;
+  height: 800px;
 }
