@@ -35,16 +35,17 @@
     try
     {
       $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', '');
+
+      // Chercher si l'utilisateur existe déjà
+      $requete = $bdd->prepare('SELECT id_utilisateur FROM utilisateur WHERE adresse_mail = ? AND pseudo = ?');
+      $requete->execute(array($email, $pseudo));
+      // Récupérer le résultat
+      $resultat = $requete->fetch();
     }
     catch (Exception $e)
     {
       die('Erreur : ' . $e->getMessage());
     }
-    // Chercher si l'utilisateur existe déjà
-    $requete = $bdd->prepare('SELECT id_utilisateur FROM utilisateur WHERE adresse_mail = ? AND pseudo = ?');
-    $requete->execute(array($email, $pseudo));
-    // Récupérer le résultat
-    $resultat = $requete->fetch();
 
     // Si l'utilisateur existe déjà, prévenir
     if($resultat != FALSE)
@@ -70,11 +71,14 @@
     // Sinon, le créer
     else
     {
-      // Ajouter le nouvel utilisateur
-      $requete = $bdd->prepare('INSERT INTO utilisateur (adresse_mail,pseudo,prenom,nom) VALUES (?,?,?,?)');
-      $requete->execute(array($email,$pseudo,$prenom,$nom));
-      echo("Bonjour $pseudo ! Vous êtes maintenant inscrit sur NetPool !");
-
+      try {
+        // Ajouter le nouvel utilisateur
+        $requete = $bdd->prepare('INSERT INTO utilisateur (adresse_mail,pseudo,prenom,nom) VALUES (?,?,?,?)');
+        $requete->execute(array($email,$pseudo,$prenom,$nom));
+        echo("Bonjour $pseudo ! Vous êtes maintenant inscrit sur NetPool !");
+      } catch (\Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+      }
       // Bouton pour recommencer
       echo '<div>
         <form action="../pages/accueil.php">
@@ -82,5 +86,11 @@
         </form>
       </div>';
     }
+    try{
+      $bbb = null;
+    } catch (\Exception $e) {
+      die('Erreur : ' . $e->getMessage());
+    }
+
   }
 ?>

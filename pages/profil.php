@@ -15,6 +15,7 @@
       <div class="row">
 
         <!-- photo couv -->
+<<<<<<< HEAD
         <img src="../upload/couv/couverture.jpg" class="img-responsive img_couv" alt="img_couv">
 
         <!-- pp -->
@@ -27,6 +28,19 @@
         <div class="col-sm-12 nom_job">
           Harry Potter<br>
           Sorcier
+=======
+        <?php
+          $pc = $_SESSION['$couv_utilisateur'];
+          echo '<img src="../upload/couv/'.$pc.'" class="img-responsive img_couv" alt="img_couv">';
+        ?>
+
+        <!-- pp -->
+        <div class="col-sm-12">
+          <?php
+            $pp = $_SESSION['$profil_utilisateur'];
+            echo '<img src="../upload/pp/'.$pp.'" class="img-responsive img_pp" alt="img_pp">';
+          ?>
+>>>>>>> 8e3d034207b3adbaef8dbb9d96134c1f850c8119
         </div>
       </div>
 
