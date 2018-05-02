@@ -60,7 +60,6 @@
             // Récupérer le résultat
             $resultat = $requete->fetch();
             $e = $resultat[0];
-            echo " resultat : $e";
             if($e == "TRUE")
             {
               echo '<li>
@@ -71,7 +70,7 @@
 
           <!-- Deconnexion -->
           <li>
-            <a class="mot_nav" href="#">Se déconnecter <span class="glyphicon glyphicon-log-out"></span></a>
+            <a class="mot_nav" href="deconnexion.php">Se déconnecter <span class="glyphicon glyphicon-log-out"></span></a>
           </li>
         </ul>
       </div>
