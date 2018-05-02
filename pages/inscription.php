@@ -68,5 +68,9 @@
     }
   }
 
+  <form action="../index.php">
+    <input type="submit" value="Recommencer" />
+  </form>
+
 
   ?>
