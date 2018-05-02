@@ -38,13 +38,13 @@
 
           <!-- Texte droite -->
           <div class="col-sm-6">
-            <form id="mon_formulaire" action="pages/accueil.php" method="post">
+            <form id="mon_formulaire" action="pages/connexion.php" method="post">
 
               <!-- Adresse e-mail -->
               <div class="form-group">
-                <label class="control-label label_form1 col-sm-2" for="email">Email</label>
+                <label class="control-label label_form1 col-sm-2" for="emailc">Email</label>
                 <div class="col-sm-10">
-                  <input class="form-control label_form2" id="email" name="email" placeholder="E-mail" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+                  <input class="form-control label_form2" id="emailc" name="emailc" placeholder="E-mail" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
                 </div>
               </div>
 
