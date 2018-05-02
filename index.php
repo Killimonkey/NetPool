@@ -50,9 +50,9 @@
 
               <!-- Pseudo -->
               <div class="form-group">
-                <label class="control-label label_form1 col-sm-2" for="pseudo">Pseudo</label>
+                <label class="control-label label_form1 col-sm-2" for="pseudoc">Pseudo</label>
                 <div class="col-sm-10">
-                  <input class="form-control label_form2" id="pseudo" name="pseudo" placeholder="Pseudo" type="text" required>
+                  <input class="form-control label_form2" id="pseudoc" name="pseudoc" placeholder="Pseudo" type="text" required>
                 </div>
               </div>
 
@@ -81,7 +81,7 @@
 
         <!-- Texte droite -->
         <div class="col-sm-6 inscription">
-          <form id="mon_formulaire2" action="" method="post">
+          <form id="mon_formulaire2" action="pages/inscription.php" method="post">
 
             <!-- Nom -->
             <div class="form-group">

@@ -50,12 +50,21 @@
     if($resultat != FALSE)
     {
       echo("L'utilisateur $pseudo d'adresse mail $email existe déjà.");
+
+      // Essais pour des pop up
       //echo '<script type="text/javascript">window.alert("'.'Un utilisateur $pseudo avec une adresse mail $email existe déjà.'.'"); </script>'; //echo("L'utilisateur $pdo d'adresse mail $email existe déjà.");
       // retour a la page
       // = function(){header("Location: ../index.php"); exit;};
       //header("Location: ../index.php");
       //exit();
       //if(window.closed()) {header("Location: ../index.php");exit;}
+
+      // Bouton pour recommencer
+      echo '<div>
+        <form action="../index.php">
+          <input type="submit" value="Recommencer" />
+        </form>
+      </div>';
 
     }
     // Sinon, le créer
@@ -65,8 +74,13 @@
       $requete = $bdd->prepare('INSERT INTO utilisateur (adresse_mail,pseudo,prenom,nom) VALUES (?,?,?,?)');
       $requete->execute(array($email,$pseudo,$prenom,$nom));
       echo("Bonjour $pseudo ! Vous êtes maintenant inscrit sur NetPool !");
+
+      // Bouton pour recommencer
+      echo '<div>
+        <form action="../pages/accueil.php">
+          <input type="submit" value="Accueil" />
+        </form>
+      </div>';
     }
   }
-
-
-  ?>
+?>
