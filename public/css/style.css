@@ -95,20 +95,27 @@
 {
   background-color: #0F5F81;/*bleu-fonce*/
   color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .option_publier
 {
-  border: 1px solid #0F5F81;/*bleu-fonce*/
-  text-align: center;
+  border: 1px solid #0F5F81 !important;/*bleu-fonce*/
+  background-color: white !important;
+  color: black !important;
 }
 
 .option_publier:hover
 {
-  border: 1px solid #0F5F81;/*bleu-fonce*/
-  text-align: center;
-  color: white;
-  background-color: #7097AD;/*bleu-gris*/
+  border: 1px solid #0F5F81 !important;/*bleu-fonce*/
+  color: white !important;
+  background-color: #7097AD !important;/*bleu-gris*/
+}
+
+.publications
+{
+  margin-top: 30px;
 }
 
 .supprimer
