@@ -133,7 +133,7 @@
 
 .ajouter
 {
-  border: 2px #7097AD solid;
+  border: 2px #7097AD solid;/*bleu-gris*/
   background-color: #0F5F81;/*bleu-fonce*/
   color: white;
   float: right;
@@ -142,14 +142,14 @@
 
 .option-ajouter
 {
-  border: 2px #7097AD solid;
+  border: 2px #7097AD solid;/*bleu-gris*/
   background-color: #0F5F81;/*bleu-fonce*/
   height: 800px;
 }
 
 .option-supprimer
 {
-  border: 2px #7097AD solid;
+  border: 2px #7097AD solid;/*bleu-gris*/
   background-color: #0F5F81;/*bleu-fonce*/
   height: 800px;
 }
@@ -157,9 +157,9 @@
 .option-1
 {
   float: right;
-  border: 1px #7097AD solid;
+  border: 1px #7097AD solid;/*bleu-fonce*/
   background-color: white;
-  height: 263px;
+  height: 280px;
 
 }
 
@@ -193,5 +193,27 @@
   height: 170px !important;
   width: 170px;
   border: 1px solid #0F5F81; /*bleu-fonce*/
-  margin-top: -85px;
+  margin-top: -85px
+}
+
+.notif
+{
+  border: 2px #0F5F81 solid;/*bleu-fonce*/
+  background-color: white;
+  height: 200px;
+}
+
+.titre
+{
+  border: 2px #7097AD solid;/*bleu-gris*/
+  background-color: #0F5F81;/*bleu-fonce*/
+  color: white;
+}
+
+.corps
+{
+  float: right;
+  border: 2px #7097AD solid;/*bleu-fonce*/
+  background-color: white;
+  height: 800px;
 }
