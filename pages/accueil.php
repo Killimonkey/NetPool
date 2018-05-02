@@ -69,6 +69,9 @@
                   <div class="form-group">
                     <label for="comentaire_event" class="col-form-label">Commentaire:</label>
                     <input type="text" class="form-control" id="comentaire_event">
+                    <!-- Photo -->
+                    <label class="control-label" for="photo">Télécharger une photo:</label>
+                    <input type="file" name="photo" required>
                   </div>
                 </form>
               </div>

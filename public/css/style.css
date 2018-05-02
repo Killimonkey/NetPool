@@ -23,7 +23,7 @@
 .label_form2
 {
   margin-bottom: 10px !important;
-  color: white;
+  color: white !important;
   background-color: #0F5F81 !important;/*bleu-fonce*/
 }
 
@@ -88,6 +88,11 @@
 .body
 {
   margin-top: 100px;
+}
+
+.body_profil
+{
+  margin-top: 55px;
 }
 
 /*Accueil*/
@@ -161,5 +166,32 @@
 .option-2
 {
   margin-top: 40px;
+}
 
+.bouton_bleu
+{
+  color: white;
+  background-color: #0F5F81 !important;/*bleu-fonce*/
+  border: 1px solid #0F5F81 !important;/*bleu-fonce*/
+}
+
+/*Profil*/
+.img_couv
+{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 200px !important;
+  width: 100%;
+}
+
+.img_pp
+{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 170px !important;
+  width: 170px;
+  border: 1px solid #0F5F81; /*bleu-fonce*/
+  margin-top: -85px;
 }
