@@ -41,10 +41,34 @@
           <li>
             <a class="mot_nav" href="emplois.php">Offres d'emplois</a>
           </li>
+
           <!-- Lien vers admin -->
-          <li>
-            <a class="mot_nav" href="admin.php">Admin</a>
-          </li>
+          <?php
+            session_start();
+            // Essayer de se connecter à la base de données
+            try
+            {
+              $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', '');
+            }
+            catch (Exception $e)
+            {
+              die('Erreur : ' . $e->getMessage());
+            }
+            // Chercher si l'utilisateur existe déjà
+            $requete = $bdd->prepare('SELECT check_admin FROM utilisateur WHERE id_utilisateur = ?');
+            $requete->execute(array($_SESSION['$id_utilisateur']));
+            // Récupérer le résultat
+            $resultat = $requete->fetch();
+            $e = $resultat[0];
+            echo " resultat : $e";
+            if($e == "TRUE")
+            {
+              echo '<li>
+                <a class="mot_nav" href="admin.php">Admin</a>
+              </li>';
+            }
+          ?>
+
           <!-- Deconnexion -->
           <li>
             <a class="mot_nav" href="#">Se déconnecter <span class="glyphicon glyphicon-log-out"></span></a>
