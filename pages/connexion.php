@@ -36,6 +36,8 @@
       $resultat = $requete->fetch();
       // Récupérer l'id de l'utilisateur
       $_SESSION['$id_utilisateur'] = $resultat[0];
+      $_SESSION['$email']          = $emailc;
+      $_SESSION['$pseudo']         = $pseudoc;
 
       // Chercher son prenom
       $requete = $bdd->prepare('SELECT prenom FROM utilisateur WHERE id_utilisateur = ?');
@@ -47,6 +49,12 @@
       $requete->execute(array($_SESSION['$id_utilisateur']));
       $resultat_nom = $requete->fetch();
       $_SESSION['$nom'] = $resultat_nom[0];
+      // Chercher son age
+      $requete = $bdd->prepare('SELECT age FROM utilisateur WHERE id_utilisateur = ?');
+      $requete->execute(array($_SESSION['$id_utilisateur']));
+      $resultat_age = $requete->fetch();
+      if($resultat_age[0] != "")$_SESSION['$age'] = $resultat_age[0];
+      else $_SESSION['$age'] = "pas d'âge enregistré";
       // Chercher s'il est administrateur ou non
       $requete = $bdd->prepare('SELECT check_admin FROM utilisateur WHERE id_utilisateur = ?');
       $requete->execute(array($_SESSION['$id_utilisateur']));
@@ -87,7 +95,7 @@
     // Si l'utilisateur n'existe pas, prévenir
     if($resultat == FALSE)
     {
-      echo("L'utilisateur $pseudo d'adresse mail $emailc n'existe pas.");
+      //echo("L'utilisateur $pseudo d'adresse mail $emailc n'existe pas.");
 
       // Essais pour des pop up
       //echo '<script type="text/javascript">window.alert("'.'Un utilisateur $pseudo avec une adresse mail $email existe déjà.'.'"); </script>'; //echo("L'utilisateur $pdo d'adresse mail $email existe déjà.");
@@ -98,12 +106,16 @@
       //if(window.closed()) {header("Location: ../index.php");exit;}
 
       // Bouton pour recommencer
-      echo '<div>
-        <form action="../index.php">
-          <input type="submit" value="Recommencer" />
-        </form>
-      </div>';
+?>
 
+
+            <div>
+              <form action="../index.php">
+                <label for="recommencer"> <?php echo $pseudoc ?> (adresse mail <?php echo $emailc ?>) ne figure pas dans nos membres.</label>
+                <input name="recommencer" type="submit" value="Recommencer" />
+              </form>
+            </div>
+<?php
     }
     // Sinon, lui donner accès à son accueil
     else
