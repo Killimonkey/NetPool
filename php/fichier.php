@@ -83,7 +83,6 @@ if (isset($_FILES['couv']) AND $_FILES['couv']['error'] == 0)
                         {
                           die('Erreur : ' . $e->getMessage());
                         }
-
                 }
         }
 }
@@ -113,7 +112,7 @@ if (isset($_FILES['pp']) AND $_FILES['pp']['error'] == 0)
                           $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', '');
                           // Ajouter la photo de profil
                           $requete = $bdd->prepare('INSERT INTO photo_video (nom_photo_video) VALUES (?)');
-                          $requete->execute(array($nom_couv));
+                          $requete->execute(array($nom_pp));
                           $requete = $bdd->prepare('UPDATE utilisateur SET nom_photo_profil = ? WHERE id_utilisateur = ?');
                           $requete->execute(array($nom_pp,$_SESSION['$id_utilisateur']));
                           // Récupérer le résultat
@@ -129,5 +128,5 @@ if (isset($_FILES['pp']) AND $_FILES['pp']['error'] == 0)
                 }
         }
   }
-  header ('Location:../pages/profil.php');
+header ('Location:../pages/profil.php');
 ?>
