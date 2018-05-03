@@ -23,7 +23,22 @@ if (isset($_FILES['cv']) AND $_FILES['cv']['error'] == 0)
                         $nom_cv = strtolower('cv-' .$pr. '-' . $no . '-' .$date.'-'.$heure. '.' . $extension_upload);
                         move_uploaded_file($_FILES['cv']['tmp_name'], '../upload/cv/' . $nom_cv);
 
-                          header ('Location:../pages/profil.php');
+                        // Essayer de se connecter à la base de données
+                        try
+                        {
+                          $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', '');
+                          // Ajouter le cv
+                          $requete = $bdd->prepare('UPDATE utilisateur SET nom_cv = ? WHERE id_utilisateur = ?');
+                          $requete->execute(array($nom_cv,$_SESSION['$id_utilisateur']));
+                          // Récupérer le résultat
+                          $resultat = $requete->fetch();
+                          $bdd = null;
+                        }
+                        catch (Exception $e)
+                        {
+                          die('Erreur : ' . $e->getMessage());
+                        }
+                        header ('Location:../pages/profil.php');
                 }
         }
 }
