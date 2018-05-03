@@ -37,21 +37,45 @@
       // Récupérer l'id de l'utilisateur
       $_SESSION['$id_utilisateur'] = $resultat[0];
 
-      // Chercher si l'utilisateur existe déjà
+      // Chercher son prenom
+      $requete = $bdd->prepare('SELECT prenom FROM utilisateur WHERE id_utilisateur = ?');
+      $requete->execute(array($_SESSION['$id_utilisateur']));
+      $resultat_prenom = $requete->fetch();
+      $_SESSION['$prenom'] = $resultat_prenom[0];
+      // Chercher son nom
+      $requete = $bdd->prepare('SELECT nom FROM utilisateur WHERE id_utilisateur = ?');
+      $requete->execute(array($_SESSION['$id_utilisateur']));
+      $resultat_nom = $requete->fetch();
+      $_SESSION['$nom'] = $resultat_nom[0];
+      // Chercher s'il est administrateur ou non
+      $requete = $bdd->prepare('SELECT check_admin FROM utilisateur WHERE id_utilisateur = ?');
+      $requete->execute(array($_SESSION['$id_utilisateur']));
+      $resultat_admin = $requete->fetch();
+      $_SESSION['$admin'] = $resultat_admin[0];
+      // Chercher son poste
+      $requete = $bdd->prepare('SELECT poste FROM utilisateur WHERE id_utilisateur = ?');
+      $requete->execute(array($_SESSION['$id_utilisateur']));
+      $resultat_poste = $requete->fetch();
+      if($resultat_poste[0] != "")$_SESSION['$poste'] = $resultat_poste[0];
+      else $_SESSION['$poste'] = "pas de poste enregistré";
+      // Chercher son cv
+      $requete = $bdd->prepare('SELECT nom_cv FROM utilisateur WHERE id_utilisateur = ?');
+      $requete->execute(array($_SESSION['$id_utilisateur']));
+      $resultat_cv = $requete->fetch();
+      if($resultat_cv != NULL) $_SESSION['$cv'] = $resultat_cv[0];
+      else $_SESSION['$cv'] = NULL;
+      // Chercher sa photo de couverture
       $requete = $bdd->prepare('SELECT nom_photo_couv FROM utilisateur WHERE id_utilisateur = ?');
       $requete->execute(array($_SESSION['$id_utilisateur']));
-      // Récupérer le résultat
-      $resultat_1 = $requete->fetch();
-      // Récupérer l'id de l'utilisateur
-      $_SESSION['$couv_utilisateur'] = $resultat_1[0];
-
-      // Chercher si l'utilisateur existe déjà
+      $resultat_couv = $requete->fetch();
+      if($resultat_couv[0] != "") $_SESSION['$couv_utilisateur'] = $resultat_couv[0];
+      else $_SESSION['$couv_utilisateur'] = "public/images/couv_template.jpg";
+      // Chercher sa photo de profil
       $requete = $bdd->prepare('SELECT nom_photo_profil FROM utilisateur WHERE id_utilisateur = ?');
       $requete->execute(array($_SESSION['$id_utilisateur']));
-      // Récupérer le résultat
-      $resultat_2 = $requete->fetch();
-      // Récupérer l'id de l'utilisateur
-      $_SESSION['$profil_utilisateur'] = $resultat_2[0];
+      $resultat_profil = $requete->fetch();
+      if($resultat_profil[0] != "") $_SESSION['$profil_utilisateur'] = $resultat_profil[0];
+      else $_SESSION['$profil_utilisateur'] = "public/images/pp_template.jpg";
 
       $bdd = null;
     }
@@ -63,7 +87,7 @@
     // Si l'utilisateur n'existe pas, prévenir
     if($resultat == FALSE)
     {
-      echo("L'utilisateur $pseudoc d'adresse mail $emailc n'existe pas.");
+      echo("L'utilisateur $pseudo d'adresse mail $emailc n'existe pas.");
 
       // Essais pour des pop up
       //echo '<script type="text/javascript">window.alert("'.'Un utilisateur $pseudo avec une adresse mail $email existe déjà.'.'"); </script>'; //echo("L'utilisateur $pdo d'adresse mail $email existe déjà.");
@@ -85,7 +109,8 @@
     else
     {
       // Bienvenue
-      echo("Bonjour $pseudoc ! Comment allez-vous ?");
+      $pr = $_SESSION['$prenom'];
+      echo("Bonjour $pr ! Comment allez-vous ?");
 
       // Bouton pour recommencer
       echo '<div>
