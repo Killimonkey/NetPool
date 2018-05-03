@@ -81,8 +81,8 @@
       }
       // Bouton pour recommencer
       echo '<div>
-        <form action="../pages/accueil.php">
-          <input type="submit" value="Accueil" />
+        <form action="../index.php">
+          <input type="submit" value="Connexion" />
         </form>
       </div>';
     }

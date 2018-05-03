@@ -16,14 +16,16 @@
         <!-- photo couv -->
         <?php
           $pc = $_SESSION['$couv_utilisateur'];
-          echo '<img src="../upload/couv/'.$pc.'" class="img-responsive img_couv" alt="img_couv">';
+          if($pc != "public/images/couv_template.jpg") echo '<img src="../upload/couv/'.$pc.'" class="img-responsive img_couv" alt="img_couv">';
+          else echo '<img src="../'.$pc.'" class="img-responsive img_couv" alt="img_couv">';
         ?>
 
         <!-- pp -->
         <div class="col-sm-12">
           <?php
             $pp = $_SESSION['$profil_utilisateur'];
-            echo '<img src="../upload/pp/'.$pp.'" class="img-responsive img_pp" alt="img_pp">';
+            if($pp != "public/images/pp_template.jpg") echo '<img src="../upload/pp/'.$pp.'" class="img-responsive img-rounded img_pp" alt="img_pp">';
+            else echo '<img src="../'.$pp.'" class="img-responsive img-rounded img_pp" alt="img_pp">';
           ?>
 
         </div>
@@ -33,8 +35,14 @@
         <div class="col-sm-12">
           <!-- Nom + job -->
           <div class="col-sm-12 nom_job">
-            Harry Potter<br>
-            Sorcier
+            <?php
+              $pr = $_SESSION['$prenom'];
+              $nm = $_SESSION['$nom'];
+              $ps = $_SESSION['$poste'];
+              echo ''.$pr.' '.$nm.'<br>'.$ps.'';
+            ?>
+            <!-- Harry Potter<br>
+            Sorcier -->
           </div>
 
           <!-- Modifier profil -->
