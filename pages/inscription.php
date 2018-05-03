@@ -34,7 +34,7 @@
     // Essayer de se connecter à la base de données
     try
     {
-      $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', '');
+      $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', 'root');
 
       // Chercher si l'utilisateur existe déjà
       $requete = $bdd->prepare('SELECT id_utilisateur FROM utilisateur WHERE adresse_mail = ? AND pseudo = ?');
