@@ -33,6 +33,8 @@ if (isset($_FILES['cv']) AND $_FILES['cv']['error'] == 0)
                           // Récupérer le résultat
                           $resultat = $requete->fetch();
                           $bdd = null;
+                          // Modifier dans les variables
+                          $_SESSION['$cv'] = $nom_cv;
                         }
                         catch (Exception $e)
                         {
@@ -61,6 +63,26 @@ if (isset($_FILES['couv']) AND $_FILES['couv']['error'] == 0)
                         $no_couv = $_SESSION['$nom'];
                         $nom_couv = strtolower('couv-' .$pr_couv. '-' . $no_couv . '-' .$date.'-'.$heure. '.' . $extension_upload);
                         move_uploaded_file($_FILES['couv']['tmp_name'], '../upload/couv/' . $nom_couv);
+
+                        // Essayer de se connecter à la base de données
+                        try
+                        {
+                          $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', '');
+                          // Ajouter la photo de couverture
+                          $requete = $bdd->prepare('INSERT INTO photo_video (nom_photo_video) VALUES (?)');
+                          $requete->execute(array($nom_couv));
+                          $requete = $bdd->prepare('UPDATE utilisateur SET nom_photo_couv = ? WHERE id_utilisateur = ?');
+                          $requete->execute(array($nom_couv,$_SESSION['$id_utilisateur']));
+                          // Récupérer le résultat
+                          $resultat = $requete->fetch();
+                          $bdd = null;
+                          // Enregister dans Variables
+                          $_SESSION['$couv_utilisateur'] = $nom_couv;
+                        }
+                        catch (Exception $e)
+                        {
+                          die('Erreur : ' . $e->getMessage());
+                        }
 
                         header ('Location:../pages/profil.php');
 
