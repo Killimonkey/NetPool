@@ -99,6 +99,14 @@
               </div>
             </div>
 
+            <!-- Naissance -->
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="naissance">Naissance</label>
+              <div class="col-sm-10">
+                <input class="form-control label_form3" id="naissance" name="naissance" placeholder="Date de naissance" type="date" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" required>
+              </div>
+            </div>
+
             <!-- Pseudo -->
             <div class="form-group">
               <label class="control-label col-sm-2" for="pseudo">Pseudo</label>
