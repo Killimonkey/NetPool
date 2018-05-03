@@ -27,7 +27,7 @@
     // Essayer de se connecter à la base de données
     try
     {
-      $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', 'root');
+      $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', '');
 
       // Chercher si l'utilisateur existe déjà
       $requete = $bdd->prepare('SELECT id_utilisateur FROM utilisateur WHERE adresse_mail = ? AND pseudo = ?');
@@ -87,7 +87,7 @@
     // Si l'utilisateur n'existe pas, prévenir
     if($resultat == FALSE)
     {
-      echo("L'utilisateur $pseudo d'adresse mail $emailc n'existe pas.");
+      //echo("L'utilisateur $pseudo d'adresse mail $emailc n'existe pas.");
 
       // Essais pour des pop up
       //echo '<script type="text/javascript">window.alert("'.'Un utilisateur $pseudo avec une adresse mail $email existe déjà.'.'"); </script>'; //echo("L'utilisateur $pdo d'adresse mail $email existe déjà.");
@@ -98,12 +98,16 @@
       //if(window.closed()) {header("Location: ../index.php");exit;}
 
       // Bouton pour recommencer
-      echo '<div>
-        <form action="../index.php">
-          <input type="submit" value="Recommencer" />
-        </form>
-      </div>';
+?>
 
+
+            <div>
+              <form action="../index.php">
+                <label for="recommencer"> <?php echo $pseudoc ?> (adresse mail <?php echo $emailc ?>) ne figure pas dans nos membres.</label>
+                <input name="recommencer" type="submit" value="Recommencer" />
+              </form>
+            </div>
+<?php
     }
     // Sinon, lui donner accès à son accueil
     else
