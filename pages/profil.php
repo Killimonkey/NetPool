@@ -37,6 +37,84 @@
             Sorcier
           </div>
 
+          <!-- Modifier profil -->
+          <div class="col-sm-12">
+            <button type="button" class="btn btn-primary parametres_profil" data-toggle="modal" data-target="#modal_modif">Modifier mon profil</button>
+
+            <!-- Popup modifier profil -->
+            <div class="modal fade" id="modal_modif" tabindex="-1" role="dialog" aria-labelledby="modal_modif" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal_event">Modifier mon profil</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <button type="button" class="btn btn-primary parametres_profil" data-toggle="modal" data-target="#modal_fic">Modifier mes fichiers</button>
+                      <button type="button" class="btn btn-primary parametres_profil" data-toggle="modal" data-target="#modal_inf">Modifier mes infos</button>
+                  </div>
+
+                  <!-- Boutons annuler et valider -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Popup modifier fichiers -->
+            <div class="modal fade" id="modal_fic" tabindex="-1" role="dialog" aria-labelledby="modal_fic" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal_fic">Modifier mes fichiers</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+                  <form action="fichier.php" method="post" enctype="multipart/form-data">
+
+                    <div class="modal-body">
+
+                        <!-- Couv -->
+                      <div class="form-group">
+                        <label for="couv">Couverture:</label>
+                        <input type="file" name="couv" class="form-control">
+                      </div>
+
+                      <!-- PP -->
+                      <div class="form-group">
+                        <label for="pp">Profil:</label>
+                        <input type="file" name="pp" class="form-control">
+                      </div>
+
+                      <!-- CV -->
+                      <div class="form-group">
+                        <label for="cv">CV:</label>
+                        <input type="file" name="cv" class="form-control">
+                      </div>
+
+                    </div>
+
+
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <input type="submit" value="Valider" class="btn btn-primary"></input>
+                      </div>
+
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
           <!-- Mes infos -->
           <div class="col-sm-4">
             <div class="col-sm-12 profil">Mes infos</div>
@@ -64,10 +142,10 @@
                     <label><input type="radio" name="optradio">Public</label>
                   </div>
                   <div class="radio">
-                    <label><input type="radio" name="optradio">Amis</label>
+                    <label><input type="radio" name="optradio">Réseau</label>
                   </div>
                   <div class="radio">
-                    <label><input type="radio" name="optradio">Réseau</label>
+                    <label><input type="radio" name="optradio">Amis</label>
                   </div>
                 </form>
               </div>
