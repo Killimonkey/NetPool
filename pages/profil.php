@@ -202,8 +202,8 @@
           <div class="col-sm-4">
             <div class="col-sm-12 profil">Mes infos</div>
             <div class="col-sm-12">
-              <?php $ag = $_SESSION['$age']; ?>
-              <?php echo $ag; ?> ans
+              <?php $dn = $_SESSION['$naissance']; ?>
+              <?php echo $dn; ?>
             </div>
             <div class="col-sm-12">
               <?php $ma = $_SESSION['$email']; ?>
