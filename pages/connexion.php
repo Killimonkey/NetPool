@@ -36,6 +36,8 @@
       $resultat = $requete->fetch();
       // Récupérer l'id de l'utilisateur
       $_SESSION['$id_utilisateur'] = $resultat[0];
+      $_SESSION['$email']          = $emailc;
+      $_SESSION['$pseudo']         = $pseudoc;
 
       // Chercher son prenom
       $requete = $bdd->prepare('SELECT prenom FROM utilisateur WHERE id_utilisateur = ?');
@@ -47,6 +49,12 @@
       $requete->execute(array($_SESSION['$id_utilisateur']));
       $resultat_nom = $requete->fetch();
       $_SESSION['$nom'] = $resultat_nom[0];
+      // Chercher son age
+      $requete = $bdd->prepare('SELECT age FROM utilisateur WHERE id_utilisateur = ?');
+      $requete->execute(array($_SESSION['$id_utilisateur']));
+      $resultat_age = $requete->fetch();
+      if($resultat_age[0] != "")$_SESSION['$age'] = $resultat_age[0];
+      else $_SESSION['$age'] = "pas d'âge enregistré";
       // Chercher s'il est administrateur ou non
       $requete = $bdd->prepare('SELECT check_admin FROM utilisateur WHERE id_utilisateur = ?');
       $requete->execute(array($_SESSION['$id_utilisateur']));

@@ -62,8 +62,8 @@
 
       // Bouton pour recommencer
       echo '<div>
-        <form action="../index.php">
-          <input type="submit" value="Recommencer" />
+        <form action="../pages/admin.php">
+          <input type="submit" value="Retour" />
         </form>
       </div>';
 
@@ -75,14 +75,14 @@
         // Ajouter le nouvel utilisateur
         $requete = $bdd->prepare('INSERT INTO utilisateur (adresse_mail,pseudo,prenom,nom) VALUES (?,?,?,?)');
         $requete->execute(array($email,$pseudo,$prenom,$nom));
-        echo("Bonjour $prenom ! Vous êtes maintenant inscrit(e) sur NetPool !");
+        echo("$prenom $nom est maintenant inscrit(e) sur NetPool !");
       } catch (\Exception $e) {
         die('Erreur : ' . $e->getMessage());
       }
       // Bouton pour recommencer
       echo '<div>
-        <form action="../index.php">
-          <input type="submit" value="Connexion" />
+        <form action="../pages/admin.php">
+          <input type="submit" value="Retour" />
         </form>
       </div>';
     }
