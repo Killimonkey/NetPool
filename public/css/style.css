@@ -277,3 +277,14 @@
   margin-left: 30px;
   margin-top: 30px;
 }
+
+.img_ppnotif
+{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 70px !important;
+  width: 70px;
+  border: 1px solid #0F5F81; /*bleu-fonce*/
+  margin-left: 10px;
+}
