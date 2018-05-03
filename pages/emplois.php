@@ -15,12 +15,41 @@
 
         <div class="col-sm-12">
           <!-- Offre -->
-          <div class="col-sm-12 supprimer">Offres d'emplois</div>
+          <div class="col-sm-12 supprimer"><h3>Offres d'emplois</h3></div>
           <!-- option Supprimer-->
           <div class="col-sm-12 option-supprimer">
-            <div class="col-sm-12 option-1"></div>
-            <div class="col-sm-12 option-1"></div>
-            <div class="col-sm-12 option-1"></div>
+            <br>
+            <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Titre</h3>
+            </div>
+            <div class="panel-body">Contenu</div>
+          </div>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Titre</h3>
+            </div>
+            <div class="panel-body">Contenu</div>
+          </div>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Titre</h3>
+            </div>
+            <div class="panel-body">Contenu</div>
+          </div>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Titre</h3>
+            </div>
+            <div class="panel-body">Contenu</div>
+          </div>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Titre</h3>
+            </div>
+            <div class="panel-body">Contenu</div>
+          </div>
+
           </div>
 
         </div>

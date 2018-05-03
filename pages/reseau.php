@@ -47,6 +47,7 @@
                     if($pp != "public/images/pp_template.jpg") echo '<img src="../upload/pp/'.$pp.'" class="img-responsive img-circle img_ppreseau" alt="img_ppreseau">';
                     else echo '<img src="../'.$pp.'" class="img-responsive img-circle img_pp" alt="img_ppreseau">';
                   ?>
+
             </div>
             <div class="col-sm-6">
                   <?php

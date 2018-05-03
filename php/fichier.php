@@ -33,6 +33,8 @@ if (isset($_FILES['cv']) AND $_FILES['cv']['error'] == 0)
                           // Récupérer le résultat
                           $resultat = $requete->fetch();
                           $bdd = null;
+                          // Modifier dans les variables
+                          $_SESSION['$cv'] = $nom_cv;
                         }
                         catch (Exception $e)
                         {
@@ -62,7 +64,25 @@ if (isset($_FILES['couv']) AND $_FILES['couv']['error'] == 0)
                         $nom_couv = strtolower('couv-' .$pr_couv. '-' . $no_couv . '-' .$date.'-'.$heure. '.' . $extension_upload);
                         move_uploaded_file($_FILES['couv']['tmp_name'], '../upload/couv/' . $nom_couv);
 
-
+                        // Essayer de se connecter à la base de données
+                        try
+                        {
+                          $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', '');
+                          // Ajouter la photo de couverture
+                          $requete = $bdd->prepare('INSERT INTO photo_video (nom_photo_video) VALUES (?)');
+                          $requete->execute(array($nom_couv));
+                          $requete = $bdd->prepare('UPDATE utilisateur SET nom_photo_couv = ? WHERE id_utilisateur = ?');
+                          $requete->execute(array($nom_couv,$_SESSION['$id_utilisateur']));
+                          // Récupérer le résultat
+                          $resultat = $requete->fetch();
+                          $bdd = null;
+                          // Enregister dans Variables
+                          $_SESSION['$couv_utilisateur'] = $nom_couv;
+                        }
+                        catch (Exception $e)
+                        {
+                          die('Erreur : ' . $e->getMessage());
+                        }
 
                 }
         }
@@ -86,10 +106,9 @@ if (isset($_FILES['pp']) AND $_FILES['pp']['error'] == 0)
                         $no_pp = $_SESSION['$nom'];
                         $nom_pp = strtolower('pp-' .$pr_pp. '-' . $no_pp . '-' .$date.'-'.$heure. '.' . $extension_upload);
                         move_uploaded_file($_FILES['pp']['tmp_name'], '../upload/pp/' . $nom_pp);
-
-
+                 
                 }
         }
-}
-header ('Location:../pages/profil.php');
+  }
+  header ('Location:../pages/profil.php');
 ?>
