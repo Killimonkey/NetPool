@@ -59,7 +59,7 @@
                   </div>
                   <div class="modal-body">
                       <button type="button" class="btn btn-primary parametres_profil" data-toggle="modal" data-target="#modal_fic">Modifier mes fichiers</button>
-                      <button type="button" class="btn btn-primary parametres_profil" data-toggle="modal" data-target="#modal_inf">Modifier mes infos</button>
+                      <button type="button" class="btn btn-primary parametres_profil" data-toggle="modal" data-target="#modal_poste">Modifier mon poste</button>
                   </div>
 
                   <!-- Boutons annuler et valider -->
@@ -67,6 +67,40 @@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            <!-- Popup modifier poste -->
+            <div class="modal fade" id="modal_poste" tabindex="-1" role="dialog" aria-labelledby="modal_poste" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal_poste">Modifier mon poste</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+                  <form action="../php/poste.php" method="post">
+
+                    <div class="modal-body">
+                      <!-- Poste -->
+                      <div class="form-group">
+                      <label for="poste">Poste:</label>
+                      <input type="text" name="poste" class="form-control" required>
+                      </div>
+
+                    </div>
+
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-info" data-dismiss="modal">Retour</button>
+                      <input type="submit" value="Valider" class="btn btn-primary"></input>
+                    </div>
+                  </form>
+
+                </div>
+
               </div>
             </div>
 
@@ -209,12 +243,8 @@
               <?php $ma = $_SESSION['$email']; ?>
               <?php echo $ma; ?>
             </div>
-            <div class="col-sm-6">mon CV</div>
             <div class="col-sm-6">
-              <form action="../php/fichier.php" method="post" enctype="multipart/form-data">
-                <input type="file" name="cv" required>
-                <input type="submit" value="Valider">
-              </form>
+              <button type="button" class="btn btn-success" data-dismiss="modal">Mon CV</button>
             </div>
           </div>
 
