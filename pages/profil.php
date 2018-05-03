@@ -41,8 +41,6 @@
               $ps = $_SESSION['$poste'];
               echo ''.$pr.' '.$nm.'<br>'.$ps.'';
             ?>
-            <!-- Harry Potter<br>
-            Sorcier -->
           </div>
 
           <!-- Modifier profil -->
@@ -83,41 +81,86 @@
                     </button>
                   </div>
 
-                  <form action="fichier.php" method="post" enctype="multipart/form-data">
-
-                    <div class="modal-body">
-
-                        <!-- Couv -->
-                      <div class="form-group">
-                        <label for="couv">Couverture:</label>
-                        <input type="file" name="couv" class="form-control">
-                      </div>
-
-                      <!-- PP -->
-                      <div class="form-group">
-                        <label for="pp">Profil:</label>
-                        <input type="file" name="pp" class="form-control">
-                      </div>
-
-                      <!-- CV -->
-                      <div class="form-group">
-                        <label for="cv">CV:</label>
-                        <input type="file" name="cv" class="form-control">
-                      </div>
-
-                    </div>
+                  <div class="modal-body">
+                    <button type="button" class="btn btn-primary parametres_profil" data-toggle="modal" data-target="#modal_fic_cv">Modifier mon CV</button>
+                    <button type="button" class="btn btn-primary parametres_profil" data-toggle="modal" data-target="#modal_fic_couv">Modifier ma photo de couverture</button>
+                    <button type="button" class="btn btn-primary parametres_profil" data-toggle="modal" data-target="#modal_fic_pp">Modifier ma photo de profil</button>
+                  </div>
 
 
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                        <input type="submit" value="Valider" class="btn btn-primary"></input>
-                      </div>
-
-                    </div>
-                  </form>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Retour</button>
+                  </div>
 
                 </div>
+
               </div>
+            </div>
+
+            <!-- Popup modifier cv -->
+            <div class="modal fade" id="modal_fic_cv" tabindex="-1" role="dialog" aria-labelledby="modal_fic_cv" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal_fic_cv">Modifier mon CV</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+                  <form action="../php/fichier.php" method="post" enctype="multipart/form-data">
+
+                    <div class="modal-body">
+                      <!-- CV -->
+                      <div class="form-group">
+                      <label for="cv">CV:</label>
+                      <input type="file" name="cv" class="form-control">
+                      </div>
+
+                    </div>
+
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-info" data-dismiss="modal">Retour</button>
+                      <input type="submit" value="Valider" class="btn btn-primary"></input>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- Popup modifier couv -->
+            <div class="modal fade" id="modal_fic_couv" tabindex="-1" role="dialog" aria-labelledby="modal_fic_couv" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal_fic_couv">Modifier ma photo de couverture</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+                  <form action="../php/fichier.php" method="post" enctype="multipart/form-data">
+
+                    <div class="modal-body">
+                      <!-- Couv -->
+                      <div class="form-group">
+                      <label for="couv">Couverture:</label>
+                      <input type="file" name="couv" class="form-control">
+                      </div>
+
+                    </div>
+
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-info" data-dismiss="modal">Retour</button>
+                      <input type="submit" value="Valider" class="btn btn-primary"></input>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
             </div>
 
           </div>
@@ -130,7 +173,7 @@
             <div class="col-sm-12">amandine.ducruetr@edu.ece.fr</div>
             <div class="col-sm-6">Mon CV</div>
             <div class="col-sm-6">
-              <form action="fichier.php" method="post" enctype="multipart/form-data">
+              <form action="../php/fichier.php" method="post" enctype="multipart/form-data">
                 <input type="file" name="cv" required>
                 <input type="submit" value="Valider">
               </form>
@@ -169,3 +212,13 @@
   <?php include ("footer.php"); ?>
 
 </html>
+
+
+
+
+
+<!-- PP -->
+<div class="form-group">
+<label for="pp">Profil:</label>
+<input type="file" name="pp" class="form-control">
+</div>
