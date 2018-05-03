@@ -169,9 +169,15 @@
           <!-- Mes infos -->
           <div class="col-sm-4">
             <div class="col-sm-12 profil">Mes infos</div>
-            <div class="col-sm-12">20 ans</div>
-            <div class="col-sm-12">amandine.ducruetr@edu.ece.fr</div>
-            <div class="col-sm-6">Mon CV</div>
+            <div class="col-sm-12">
+              <?php $ag = $_SESSION['$age']; ?>
+              <?php echo $ag; ?> ans
+            </div>
+            <div class="col-sm-12">
+              <?php $ma = $_SESSION['$email']; ?>
+              <?php echo $ma; ?>
+            </div>
+            <div class="col-sm-6">mon CV</div>
             <div class="col-sm-6">
               <form action="../php/fichier.php" method="post" enctype="multipart/form-data">
                 <input type="file" name="cv" required>

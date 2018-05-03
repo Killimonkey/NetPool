@@ -31,7 +31,7 @@
             <div class="col-sm-12 option-1">
               <!-- Texte droite -->
               <div class="col-sm-7 ">
-                <form id="mon_formulaire2" action="" method="post">
+                <form id="mon_formulaire2" action="../php/ajout.php" method="post">
 
                   <!-- Nom -->
                   <div class="form-group">
