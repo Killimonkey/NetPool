@@ -45,22 +45,7 @@
           <!-- Lien vers admin -->
           <?php
             session_start();
-            // Essayer de se connecter à la base de données
-            try
-            {
-              $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', '');
-            }
-            catch (Exception $e)
-            {
-              die('Erreur : ' . $e->getMessage());
-            }
-            // Chercher si l'utilisateur existe déjà
-            $requete = $bdd->prepare('SELECT check_admin FROM utilisateur WHERE id_utilisateur = ?');
-            $requete->execute(array($_SESSION['$id_utilisateur']));
-            // Récupérer le résultat
-            $resultat = $requete->fetch();
-            $e = $resultat[0];
-            if($e == "TRUE")
+            if($_SESSION['$admin'] == "TRUE")
             {
               echo '<li>
                 <a class="mot_nav" href="admin.php">Admin</a>
