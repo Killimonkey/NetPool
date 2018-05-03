@@ -114,7 +114,7 @@
                       <!-- CV -->
                       <div class="form-group">
                       <label for="cv">CV:</label>
-                      <input type="file" name="cv" class="form-control">
+                      <input type="file" name="cv" class="form-control" required>
                       </div>
 
                     </div>
@@ -146,7 +146,7 @@
                       <!-- Couv -->
                       <div class="form-group">
                       <label for="couv">Couverture:</label>
-                      <input type="file" name="couv" class="form-control">
+                      <input type="file" name="couv" class="form-control" required>
                       </div>
 
                     </div>
@@ -178,7 +178,7 @@
                       <!-- PP -->
                       <div class="form-group">
                       <label for="pp">Profil:</label>
-                      <input type="file" name="pp" class="form-control">
+                      <input type="file" name="pp" class="form-control" required>
                       </div>
 
                     </div>

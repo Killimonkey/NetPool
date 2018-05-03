@@ -40,7 +40,7 @@ if (isset($_FILES['cv']) AND $_FILES['cv']['error'] == 0)
                         {
                           die('Erreur : ' . $e->getMessage());
                         }
-                        header ('Location:../pages/profil.php');
+
                 }
         }
 }
@@ -84,8 +84,6 @@ if (isset($_FILES['couv']) AND $_FILES['couv']['error'] == 0)
                           die('Erreur : ' . $e->getMessage());
                         }
 
-                        header ('Location:../pages/profil.php');
-
                 }
         }
 }
@@ -108,10 +106,9 @@ if (isset($_FILES['pp']) AND $_FILES['pp']['error'] == 0)
                         $no_pp = $_SESSION['$nom'];
                         $nom_pp = strtolower('pp-' .$pr_pp. '-' . $no_pp . '-' .$date.'-'.$heure. '.' . $extension_upload);
                         move_uploaded_file($_FILES['pp']['tmp_name'], '../upload/pp/' . $nom_pp);
-
-                        header ('Location:../pages/profil.php');
-
+                 
                 }
         }
-}
+  }
+  header ('Location:../pages/profil.php');
 ?>
