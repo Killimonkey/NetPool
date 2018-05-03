@@ -2,6 +2,7 @@
   // On recupere les valeurs
   $nom = isset($_POST["nom"])?$_POST["nom"] : "";
   $prenom = isset($_POST["prenom"])?$_POST["prenom"] : "";
+  $naissance = isset($_POST["naissance"])?$_POST["naissance"] : "";
   $pseudo = isset($_POST["pseudo"])?$_POST["pseudo"] : "";
   $email = isset($_POST["email"])?$_POST["email"] : "";
   $error = "";
@@ -14,6 +15,10 @@
   if($prenom == "")
   {
    $error .= "Pas de prénom<br>";
+  }
+  if($naissance == "")
+  {
+   $error .= "Pas de date de naissance<br>";
   }
   if($pseudo == "")
   {
@@ -73,8 +78,8 @@
     {
       try {
         // Ajouter le nouvel utilisateur
-        $requete = $bdd->prepare('INSERT INTO utilisateur (adresse_mail,pseudo,prenom,nom) VALUES (?,?,?,?)');
-        $requete->execute(array($email,$pseudo,$prenom,$nom));
+        $requete = $bdd->prepare('INSERT INTO utilisateur (adresse_mail,pseudo,prenom,nom,date_de_naissance) VALUES (?,?,?,?,?)');
+        $requete->execute(array($email,$pseudo,$prenom,$nom,$naissance));
         echo("$prenom $nom est maintenant inscrit(e) sur NetPool !");
       } catch (\Exception $e) {
         die('Erreur : ' . $e->getMessage());
