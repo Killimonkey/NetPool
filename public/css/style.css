@@ -197,6 +197,18 @@
   margin-bottom: 10px;
 }
 
+.img_ppreseau
+{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 70px !important;
+  width: 70px;
+  border: 1px solid #0F5F81; /*bleu-fonce*/
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
 .notif
 {
   border: 2px #0F5F81 solid;/*bleu-fonce*/
@@ -216,7 +228,7 @@
   float: right;
   border: 2px #7097AD solid;/*bleu-gris*/
   background-color: white;
-  height: 800px;
+  height: 200px;
 }
 
 .nom_job
@@ -245,6 +257,8 @@
   background-color: #0F5F81 !important;/*bleu-fonce*/
   margin-bottom: 5px !important;
   text-align: center;
+  margin-left: 10px;
+  margin-top: 10px;
 }
 
 .param_profil
@@ -252,4 +266,14 @@
   display: block !important;
   margin-left: auto !important;
   margin-right: auto !important;
+}
+
+.bouton
+{
+  color: white !important;
+  background-color: #0F5F81 !important;/*bleu-fonce*/
+  margin-bottom: 5px !important;
+  text-align: center;
+  margin-left: 30px;
+  margin-top: 30px;
 }

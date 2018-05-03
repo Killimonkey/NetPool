@@ -161,6 +161,38 @@
               </div>
             </div>
 
+            <!-- Popup modifier pp -->
+            <div class="modal fade" id="modal_fic_pp" tabindex="-1" role="dialog" aria-labelledby="modal_fic_pp" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal_fic_pp">Modifier ma photo de profil</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+                  <form action="../php/fichier.php" method="post" enctype="multipart/form-data">
+
+                    <div class="modal-body">
+                      <!-- PP -->
+                      <div class="form-group">
+                      <label for="pp">Profil:</label>
+                      <input type="file" name="pp" class="form-control">
+                      </div>
+
+                    </div>
+
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-info" data-dismiss="modal">Retour</button>
+                      <input type="submit" value="Valider" class="btn btn-primary"></input>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
             </div>
 
           </div>
@@ -218,13 +250,3 @@
   <?php include ("footer.php"); ?>
 
 </html>
-
-
-
-
-
-<!-- PP -->
-<div class="form-group">
-<label for="pp">Profil:</label>
-<input type="file" name="pp" class="form-control">
-</div>
