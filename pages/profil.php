@@ -244,7 +244,11 @@
               <?php echo $ma; ?>
             </div>
             <div class="col-sm-6">
+
+              <a href="../upload/cv/cv-cou-cou-04-05-2018-11-11-58.docx"download="cv-cou-cou-04-05-2018-11-11-58">
               <button type="button" class="btn btn-success" data-dismiss="modal">Mon CV</button>
+            </a>
+
             </div>
           </div>
 
