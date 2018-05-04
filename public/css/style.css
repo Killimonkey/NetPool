@@ -203,10 +203,9 @@
   margin-left: auto;
   margin-right: auto;
   height: 70px !important;
-  width: 70px;
+  width: 70px !important;
   border: 1px solid #0F5F81; /*bleu-fonce*/
-  margin-top: 10px;
-  margin-left: 10px;
+  margin-top: 5px;
 }
 
 .notif
@@ -225,10 +224,8 @@
 
 .corps
 {
-  float: right;
   border: 2px #7097AD solid;/*bleu-gris*/
   background-color: white;
-  height: 200px;
 }
 
 .nom_job
@@ -272,10 +269,12 @@
 {
   color: white !important;
   background-color: #0F5F81 !important;/*bleu-fonce*/
-  margin-bottom: 5px !important;
   text-align: center;
-  margin-left: 30px;
-  margin-top: 30px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .img_ppnotif

@@ -13,87 +13,80 @@
       <div class="row">
 
         <div class="col-sm-12">
-          <!-- titre-->
-          <div class="col-sm-4 titre">Mes Amis</div>
-          <div class="col-sm-4 titre">Mon réseau Professionnel</div>
-          <div class="col-sm-4 titre">Se Connecter</div>
+          <!-- Amis-->
+          <div class="col-sm-4">
+            <div class="col-sm-12 titre">Mes Amis</div>
+            <div class="col-sm-12 corps">
+              <?php
+
+              // Essayer de se connecter à la base de données
+              try
+              {
+                $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', '');
+
+                // Chercher si l'utilisateur existe déjà
+                $requete = $bdd->prepare('SELECT * FROM utilisateur AS u WHERE u.id_utilisateur IN (SELECT utilisateur_1
+                                                                                                    FROM reseau
+                                                                                                    WHERE utilisateur_2 = ? AND check_ami = "TRUE")
+                                                                          OR u.id_utilisateur IN (SELECT utilisateur_2
+                                                                                                    FROM reseau
+                                                                                                    WHERE utilisateur_1 = ? AND check_ami = "TRUE")');
+                $requete->execute(array($_SESSION['$id_utilisateur'], $_SESSION['$id_utilisateur']));
 
 
-          <?php
+                while($resultat = $requete->fetch())
+                {
+                  echo '<!-- Bloc -->
+                  <div class="row">
 
-          // Essayer de se connecter à la base de données
-          try
-          {
-            $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', '');
+                      <div class="col-sm-6">
+                      <!-- Photo -->
+                        <div class="col-sm-12">';
+                          //<?php
+                            $pp = $resultat['nom_photo_profil'];
+                            if($pp != "") echo '<img src="../upload/pp/'.$pp.'" class="img-responsive img-circle img_ppreseau" alt="img_ppreseau">';
+                            else echo '<img src="../public/images/pp_template.jpg" class="img-responsive img-circle img_pp" alt="img_ppreseau">'
+                          //
+                        .'
+                        </div>
+                        <!-- Boutons -->
+                        <div class="col-sm-12 infos-amis">';
+                            $pr = $resultat['prenom'];
+                            $nm = $resultat['nom'];
+                            $ps = $resultat['poste'];
+                            echo '<br>'.$pr.' '.$nm.'<br><br>'.$ps.''
 
-            // Chercher si l'utilisateur existe déjà
-            $requete = $bdd->prepare('SELECT * FROM utilisateur AS u WHERE u.id_utilisateur IN (SELECT utilisateur_1
-                                                                                                FROM reseau
-                                                                                                WHERE utilisateur_2 = ? AND check_ami = "TRUE")
-                                                                      OR u.id_utilisateur IN (SELECT utilisateur_2
-                                                                                                FROM reseau
-                                                                                                WHERE utilisateur_1 = ? AND check_ami = "TRUE")');
-            $requete->execute(array($_SESSION['$id_utilisateur'], $_SESSION['$id_utilisateur']));
+                          .'
+                        </div>
+                        </div>
 
+                        <div class="col-sm-6 ">
+                            <button type="button" class="btn btn-primary bouton" data-toggle="modal" data-target="#modal_profil">Voir le profil</button>
+                            <button type="button" class="btn btn-primary bouton">Supprimer</button>
+                        </div>
 
-            while($resultat = $requete->fetch())
-            {
-              echo '<!-- corps -->
-              <div class="col-sm-4 corps">
-                <div class="col-sm-6">';
-                      //<?php
-                        $pp = $resultat['nom_photo_profil'];
-                        if($pp != "") echo '<img src="../upload/pp/'.$pp.'" class="img-responsive img-circle img_ppreseau" alt="img_ppreseau">';
-                        else echo '<img src="../public/images/pp_template.jpg" class="img-responsive img-circle img_pp" alt="img_ppreseau">'
-                      //
-                    .'
-                </div>
-                <div class="col-sm-6">';
-                      //<?php
-                        $pr = $resultat['prenom'];
-                        $nm = $resultat['nom'];
-                        $ps = $resultat['poste'];
-                        echo '<br>'.$pr.' '.$nm.'<br>'.$ps.''
+                    </div> ';
+                  $bdd = null;
+              }
 
-                      .'
-                </div>
-                <div class="col-sm-12 ">
-                  <button type="button" class="btn btn-primary bouton" data-toggle="modal" data-target="#modal_profil">Voir le profil</button>
-                  <button type="button" class="btn btn-primary bouton">Supprimer</button>
-                </div>
-              </div> ';
-              $bdd = null;
-          }
-
-          }
-          catch (Exception $e)
-          {
-            die('Erreur : ' . $e->getMessage());
-          }
-          ?>
-
-          <!-- <div class="col-sm-4 corps">
-            <div class="col-sm-6">
-                  <?php/*
-                    $pp = $_SESSION['$profil_utilisateur'];
-                    if($pp != "public/images/pp_template.jpg") echo '<img src="../upload/pp/'.$pp.'" class="img-responsive img-circle img_ppreseau" alt="img_ppreseau">';
-                    else echo '<img src="../'.$pp.'" class="img-responsive img-circle img_pp" alt="img_ppreseau">';
-                */  ?>
+              }
+              catch (Exception $e)
+              {
+                die('Erreur : ' . $e->getMessage());
+              }
+              ?>
             </div>
-            <div class="col-sm-6">
-                  <?php/*
-                    $pr = $_SESSION['$prenom'];
-                    $nm = $_SESSION['$nom'];
-                    $ps = $_SESSION['$poste'];
-                    echo '<br>'.$pr.' '.$nm.'<br>'.$ps.'';*/
-                  ?>
-            </div>
-            <div class="col-sm-12 ">
-              <button type="button" class="btn btn-primary bouton" data-toggle="modal" data-target="#modal_profil">Voir le profil</button>
-              <button type="button" class="btn btn-primary bouton">Supprimer</button>
-            </div>
-          </div>-->
+          </div>
 
+          <!-- reseau pro -->
+          <div class="col-sm-4 titre">
+            <div class="col-sm-12">Mon réseau Professionnel</div>
+          </div>
+
+          <!-- Se connecter -->
+          <div class="col-sm-4 titre">
+            <div class="col-sm-12">Se Connecter</div>
+          </div>
 
           <!-- profil -->
           <div class="modal fade" id="modal_profil" tabindex="-1" role="dialog" aria-labelledby="modal_profil" aria-hidden="true">
@@ -166,12 +159,6 @@
                           <div class="col-sm-12 ma_publication"></div>
                         </div>
                       </div>
-
-
-
-
-
-
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
