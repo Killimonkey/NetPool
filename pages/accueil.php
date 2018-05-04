@@ -19,10 +19,9 @@
           <div class="col-sm-12 publier">Publier</div>
 
           <!--options -->
-          <button type="button" class="btn btn-primary option_publier col-sm-3" data-toggle="modal" data-target="#modal_event">Evénement</button>
-          <button type="button" class="btn btn-primary option_publier col-sm-3" data-toggle="modal" data-target="#modal_photo">Photo</button>
-          <button type="button" class="btn btn-primary option_publier col-sm-3" data-toggle="modal" data-target="#modal_video">Vidéo</button>
-          <button type="button" class="btn btn-primary option_publier col-sm-3" data-toggle="modal" data-target="#modal_emploi">Emploi</button>
+          <button type="button" class="btn btn-primary option_publier col-sm-4" data-toggle="modal" data-target="#modal_event">Evénement</button>
+          <button type="button" class="btn btn-primary option_publier col-sm-4" data-toggle="modal" data-target="#modal_photo">Photo</button>
+          <button type="button" class="btn btn-primary option_publier col-sm-4" data-toggle="modal" data-target="#modal_emploi">Emploi</button>
         </div>
 
         <!-- Popup -->
@@ -42,7 +41,7 @@
                 <div class="modal-body">
                   <!-- Commentaire -->
                   <div class="form-group">
-                  <label for="comment_event">Commentaire:</label>
+                  <label for="comment_event">Description :</label>
                   <input type="text" name="comment_event" class="form-control" required>
                   </div>
 
@@ -71,14 +70,40 @@
                 <div class="modal-body">
                   <!-- Commentaire -->
                   <div class="form-group">
-                  <label for="comment_photo">Commentaire:</label>
+                  <label for="comment_photo">Description :</label>
                   <input type="text" name="comment_photo" class="form-control" required>
                   </div>
 
-                  <!-- PP -->
+                  <!-- Photo -->
                   <div class="form-group">
-                  <label for="photo_publication">Profil:</label>
+                  <label for="photo_publication">Photo :</label>
                   <input type="file" name="photo_publication" class="form-control" required>
+                  </div>
+
+                  <!-- Lieu -->
+                  <div class="form-group">
+                  <label for="lieu_publication">Lieu :</label>
+                  <input type="text" name="lieu_publication" class="form-control" required>
+                  </div>
+
+                  <!-- Ressenti -->
+                  <div class="form-group">
+                    <label for="ressenti_publication">Je suis :</label>
+                    <select class="form-control form-add" name="ressenti_publication" required>
+                        <option>Heureux(se)</option>
+                        <option>Triste</option>
+                        <option>En forme</option>
+                        <option>Fatigué(e)</option>
+                        <option>En colère</option>
+                        <option>Blasé(e)</option>
+                        <option>En train de me noyé(e)</option>
+                      </select>
+                  </div>
+
+                  <!-- Activite -->
+                  <div class="form-group">
+                  <label for="activite_publication">Activité :</label>
+                  <input type="text" name="activite_publication" class="form-control" required>
                   </div>
 
                 </div>
