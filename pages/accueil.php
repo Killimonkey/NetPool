@@ -102,36 +102,72 @@
 
           <!-- Publications -->
           <div class="col-sm-12 publier">Actualités</div>
-              <ul class="list-unstyled">
 
-                <!-- Une publication -->
-                <li class="media cadre_publication">
-                <!-- PP -->
-                <div class="media-left">
-                  <img src="../upload/pp/pp1.jpg" class="media-object" style="width:45px">
-                </div>
 
-                <!-- Body -->
-                <div class="media-body">
-                  <h4 class="media-heading">Tufais Chier <small><i><?php $date ?> <?php $heure ?></i></small></h4>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-              </li>
 
-              <li class="media  cadre_publication">
-              <!-- PP -->
-              <div class="media-left">
-                <img src="../upload/pp/pp1.jpg" class="media-object" style="width:45px">
-              </div>
+<ul class="list-unstyled">
 
-              <!-- Body -->
-              <div class="media-body">
-                <h4 class="media-heading">Machin Minuche <small><i>Posted on February 19, 2016</i></small></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              </div>
-            </li>
 
-            </ul>
+                <?php
+
+                // Essayer de se connecter à la base de données
+                try
+                {
+                  $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', '');
+
+                  // Chercher si l'utilisateur existe déjà
+                  $requete = $bdd->prepare('SELECT DISTINCT * FROM publication AS p
+                                            WHERE ( p.id_publication IN (SELECT id_publication FROM publie WHERE id_utilisateur = ?)
+                                                    OR p.visibilite = "PUBLIC") ORDER BY id_publication DESC');
+                  $requete->execute(array($_SESSION['$id_utilisateur']));
+
+
+                  while($resultat = $requete->fetch())
+                  {
+                    $id_publication = $resultat['id_publication'];
+                    $description = $resultat['description'];
+                    $date_heure = $resultat['date_heure'];
+                    $activite = $resultat['activite'];
+                    $humeur = $resultat['humeur'];
+                    $visibilite = $resultat['visibilite'];
+                    $check_suppression = $resultat['check_suppression'];
+                    $type = $resultat['type'];
+
+                    $requete_utilisateur = $bdd->prepare('SELECT * FROM utilisateur WHERE id_utilisateur IN (SELECT id_utilisateur FROM publie WHERE id_publication = ?)');
+                    $requete_utilisateur->execute(array($id_publication));
+                    $utilisateur = $requete_utilisateur->fetch();
+                    $prenom_nom = strtolower($utilisateur['prenom'].' '.$utilisateur['nom']);
+                    $profil = $utilisateur['nom_photo_profil'];
+
+                    echo '
+                    <!-- Une publication -->
+                    <li class="media cadre_publication">
+                    <!-- PP -->
+                    <div class="media-left">
+                      <img src="../upload/pp/'.$profil.'" class="media-object" style="width:45px">
+                    </div>
+                    <!-- Body -->
+                    <div class="media-body">
+                      <h4 class="media-heading">'.$prenom_nom.' <small><i>'.$date_heure.'</i></small></h4>
+                      <p>'.$description.'</p>
+                    </div>
+                  </li>
+
+                ';
+
+                }
+                  $bdd = null;
+                }
+                catch (Exception $e)
+                {
+                  die('Erreur : ' . $e->getMessage());
+                }
+                ?>
+
+
+</ul>
+
+
         </div>
 
       </div>
