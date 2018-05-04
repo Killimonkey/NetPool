@@ -10,6 +10,9 @@
   <!-- css stylesheet -->
   <link rel="stylesheet" href="../public/css/style.css?refresh=0"  type="text/css">
 
+  <!-- Petite image en haute a gauche -->
+  <link rel="shortcut icon" href="../public/images/logo_netpool.png">
+
   <!-- Bootstrap -->
   <link  rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

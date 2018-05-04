@@ -235,11 +235,11 @@
           <!-- Mes infos -->
           <div class="col-sm-4">
             <div class="col-sm-12 profil">Mes infos</div>
-            <div class="col-sm-12">
+            <div class="col-sm-12"><strong>Date de naissance : </strong>
               <?php $dn = $_SESSION['$naissance']; ?>
               <?php echo $dn; ?>
             </div>
-            <div class="col-sm-12">
+            <div class="col-sm-12"><strong>Adresse e-mail : </strong>
               <?php $ma = $_SESSION['$email']; ?>
               <?php echo $ma; ?>
             </div>
