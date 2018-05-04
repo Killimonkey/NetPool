@@ -129,9 +129,7 @@
           <!-- Publications -->
           <div class="col-sm-12 publier">Actualités</div>
 
-
-
-<ul class="list-unstyled">
+          <ul class="list-unstyled">
 
 
                 <?php

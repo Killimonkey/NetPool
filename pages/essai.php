@@ -75,24 +75,81 @@
           <!-- Mes infos -->
           <div class="col-sm-4">
             <div class="col-sm-12 profil">Ses infos</div>
-            <div class="col-sm-12">
+            <div class="col-sm-12"><strong>Date de naissance : </strong>
               <?php echo $naissance; ?>
             </div>
-            <div class="col-sm-12">
+            <div class="col-sm-12"><strong>Adresse e-mail : </strong>
               <?php echo $email; ?>
             </div>
             <div class="col-sm-6">
-              <button type="button" class="btn btn-success" data-dismiss="modal">Son CV</button>
+              <button type="button" class="btn btn-success bouton_cv" data-dismiss="modal">Son CV</button>
             </div>
           </div>
 
-          <!-- Ses publications -->
-          <div class="col-sm-offset-4 col-sm-4">
+          <!-- Mes publications -->
+          <div class="col-sm-offset-1 col-sm-7">
             <div class="col-sm-12 profil">Ses publications</div>
-            <div class="col-sm-8 ma_publication"></div>
-            <div class="col-sm-4">
-            </div>
+              <ul class="list-unstyled">
+
+                <?php
+
+                  // Essayer de se connecter à la base de données
+                  try
+                  {
+                    $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', '');
+
+                    // Chercher si l'utilisateur existe déjà
+                    $requete = $bdd->prepare('SELECT DISTINCT * FROM publication AS p
+                                              WHERE p.id_publication IN (SELECT id_publication FROM publie WHERE id_utilisateur = ?)
+                                              ORDER BY id_publication DESC');
+                    $requete->execute(array($_SESSION['$id_utilisateur']));
+
+                    while($resultat = $requete->fetch())
+                    {
+                      $id_publication = $resultat['id_publication'];
+                      $description = $resultat['description'];
+                      $date_heure = $resultat['date_heure'];
+                      $activite = $resultat['activite'];
+                      $humeur = $resultat['humeur'];
+                      $visibilite = $resultat['visibilite'];
+                      $check_suppression = $resultat['check_suppression'];
+                      $type = $resultat['type'];
+
+                      $requete_utilisateur = $bdd->prepare('SELECT * FROM utilisateur WHERE id_utilisateur IN (SELECT id_utilisateur FROM publie WHERE id_publication = ?)');
+                      $requete_utilisateur->execute(array($id_publication));
+                      $utilisateur = $requete_utilisateur->fetch();
+                      $prenom_nom = strtolower($utilisateur['prenom'].' '.$utilisateur['nom']);
+                      $profil = $utilisateur['nom_photo_profil'];
+
+                      echo '
+                      <!-- Une publication -->
+                      <li class="media cadre_publication">
+                      <div class="col-sm-12">
+                        <!-- PP -->
+                        <div class="media-left">
+                          <img src="../upload/pp/'.$profil.'" class="media-object" style="width:45px">
+                        </div>
+                        <!-- Body -->
+                        <div class="media-body">
+                          <h4 class="media-heading">'.$prenom_nom.' <small><i>'.$date_heure.'</i></small></h4>
+                          <p>'.$description.'</p>
+                        </div>
+                      </div>
+                      </li>
+                      ';
+
+                    }
+                    $bdd = null;
+                  }
+                  catch (Exception $e)
+                  {
+                    die('Erreur : ' . $e->getMessage());
+                  }
+                ?>
+              </ul>
+
           </div>
+
         </div>
       </div>
     </div>

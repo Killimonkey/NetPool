@@ -63,7 +63,7 @@
 
                         <div class="col-sm-6 ">
                             <a href="essai.php?data='.$id_ami.'"> <button type="button" class="btn btn-primary bouton" >Voir le profil</button> </a>
-                            <a href="suppression.php?data='.$id_ami.'"> <button type="button" class="btn btn-primary bouton">Se Déconnecter</button> </a>
+                            <a href="suppression.php?data='.$id_ami.'"> <button type="button" class="btn btn-primary se_deconnecter">Se Déconnecter</button> </a>
                         </div>
 
                     </div>';
@@ -130,7 +130,7 @@
 
                         <div class="col-sm-6 ">
                             <a href="essai.php?data='.$id_collegue.'"> <button type="button" class="btn btn-primary bouton" >Voir le profil</button> </a>
-                            <a href="suppression.php?data='.$id_collegue.'"> <button type="button" class="btn btn-primary bouton">Se Déconnecter</button> </a>
+                            <a href="suppression.php?data='.$id_collegue.'"> <button type="button" class="btn btn-primary se_deconnecter">Se Déconnecter</button> </a>
                         </div>
 
                     </div>';
@@ -198,8 +198,8 @@
 
                         <div class="col-sm-6 ">
                             <a href="essai.php?data='.$id_autre.'"> <button type="button" class="btn btn-primary bouton" >Voir le profil</button> </a>
-                            <a href="collegue.php?data='.$id_autre.'"> <button type="button" class="btn btn-primary bouton">Se Connecter</button>
-                            <a href="ami.php?data='.$id_autre.'"> <button type="button" class="btn btn-primary bouton">Devenir Ami</button>
+                            <a href="collegue.php?data='.$id_autre.'"> <button type="button" class="btn btn-primary se_connecter">Se Connecter</button>
+                            <a href="ami.php?data='.$id_autre.'"> <button type="button" class="btn btn-primary devenir_amis">Devenir Ami</button>
                         </div>
 
                     </div>';

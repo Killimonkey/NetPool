@@ -211,11 +211,156 @@
 .parametres_profil
 {
   color: white !important;
-  background-color: #0F5F81 !important;/*bleu-fonce*/
+  background-color: #013356 !important;/*gris*/
   margin-bottom: 5px !important;
   text-align: center;
   margin-left: 10px;
   margin-top: 10px;
+  border: solid 1px #013356 !important;
+}
+
+.parametres_profil:hover
+{
+  color: white !important;
+  background-color: #0b4975 !important;/*gris-fonce*/
+  margin-bottom: 5px !important;
+  text-align: center;
+  margin-left: 10px;
+  margin-top: 10px;
+  border: solid 1px #0b4975 !important;
+  text-decoration: none;
+}
+
+.se_deconnecter
+{
+  color: white !important;
+  background-color: #550a0a !important;/*rouge-fonce*/
+  margin-bottom: 5px !important;
+  text-align: center;
+  margin-left: 10px;
+  margin-top: 10px;
+  border: solid 1px #550a0a!important;
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.se_deconnecter:hover
+{
+  color: white !important;
+  background-color: #831616 !important;/*rouge-fonce*/
+  margin-bottom: 5px !important;
+  text-align: center;
+  margin-left: 10px;
+  margin-top: 10px;
+  border: solid 1px #831616 !important;
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-decoration: none;
+}
+
+.se_connecter
+{
+  color: white !important;
+  background-color: #094509 !important;/*vert-fonce*/
+  margin-bottom: 5px !important;
+  text-align: center;
+  margin-left: 10px;
+  margin-top: 10px;
+  border: solid 1px #094509!important;
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.se_connecter:hover
+{
+  color: white !important;
+  background-color: #095209 !important;/*vert*/
+  margin-bottom: 5px !important;
+  text-align: center;
+  margin-left: 10px;
+  margin-top: 10px;
+  border: solid 1px #095209 !important;/*vert*/
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-decoration: none;
+}
+
+.devenir_amis
+{
+  color: white !important;
+  background-color: #207320 !important;/*vert*/
+  margin-bottom: 5px !important;
+  text-align: center;
+  margin-left: 10px;
+  margin-top: 10px;
+  border: solid 1px #207320 !important;/*vert*/
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-decoration: none;
+}
+
+.devenir_amis:hover
+{
+  color: white !important;
+  background-color: #208120 !important;/*vert*/
+  margin-bottom: 5px !important;
+  text-align: center;
+  margin-left: 10px;
+  margin-top: 10px;
+  border: solid 1px #208120 !important;/*vert*/
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-decoration: none;
+}
+
+.supprimer
+{
+  color: white !important;
+  background-color: #550a0a !important;/*rouge*/
+  margin-bottom: 5px !important;
+  text-align: center;
+  margin-left: 10px;
+  margin-top: 10px;
+  border: solid 1px #550a0a !important;
+}
+
+.supprimer:hover
+{
+  color: white !important;
+  background-color: #831616 !important;/*rouge-fonce*/
+  margin-bottom: 5px !important;
+  text-align: center;
+  margin-left: 10px;
+  margin-top: 10px;
+  border: solid 1px #831616 !important;
+  text-decoration: none;
+}
+
+.bouton_cv
+{
+  margin-top: 5px;
+  margin-bottom: 5px !important;
+  color: white !important;
+  background-color: #094509 !important;/*vert-fonce*/
+  text-align: center;
+  border: solid 1px #094509 !important;
+}
+
+.bouton_cv:hover
+{
+  margin-top: 5px;
+  margin-bottom: 5px !important;
+  color: white !important;
+  background-color: #095209 !important;/*vert*/
+  text-align: center;
+  border: solid 1px #095209 !important;
+  text-decoration: none;
 }
 
 .param_profil
@@ -227,14 +372,28 @@
 
 .bouton
 {
-  color: white !important;
-  background-color: #0F5F81 !important;/*bleu-fonce*/
-  text-align: center;
-  margin-top: 5px;
-  margin-bottom: 5px;
   display: block !important;
   margin-left: auto !important;
   margin-right: auto !important;
+  color: white !important;
+  background-color: #013356 !important;/*gris*/
+  margin-bottom: 5px !important;
+  margin-top: 5px !important;
+  text-align: center;
+  border: solid 1px #013356 !important;
+}
+
+.bouton:hover
+{
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  color: white !important;
+  background-color: #0b4975 !important;/*gris*/
+  margin-bottom: 5px !important;
+  margin-top: 5px !important;
+  text-align: center;
+  border: solid 1px #0b4975 !important;
 }
 
 .img_ppnotif

@@ -246,18 +246,16 @@
             <div class="col-sm-6">
 
             <a href="../upload/cv/cv-cou-cou-04-05-2018-11-11-58.docx"download="cv-cou-cou-04-05-2018-11-11-58">
-              <button type="button" class="btn btn-success" data-dismiss="modal">Mon CV</button>
+              <button type="button" class="btn btn-success bouton_cv" data-dismiss="modal">Mon CV</button>
             </a>
 
             </div>
           </div>
 
           <!-- Mes publications -->
-          <div class="col-sm-offset-4 col-sm-4">
+          <div class="col-sm-offset-1 col-sm-7">
             <div class="col-sm-12 profil">Mes publications</div>
-            <div class="col-sm-8 ma_publication">
               <ul class="list-unstyled">
-
 
                 <?php
 
@@ -292,22 +290,35 @@
                       echo '
                       <!-- Une publication -->
                       <li class="media cadre_publication">
-                      <!-- PP -->
-                      <div class="media-left">
-                        <img src="../upload/pp/'.$profil.'" class="media-object" style="width:45px">
+                      <div class="col-sm-8">
+                        <!-- PP -->
+                        <div class="media-left">
+                          <img src="../upload/pp/'.$profil.'" class="media-object" style="width:45px">
+                        </div>
+                        <!-- Body -->
+                        <div class="media-body">
+                          <h4 class="media-heading">'.$prenom_nom.' <small><i>'.$date_heure.'</i></small></h4>
+                          <p>'.$description.'</p>
+                        </div>
                       </div>
-                      <!-- Body -->
-                      <div class="media-body">
-                        <h4 class="media-heading">'.$prenom_nom.' <small><i>'.$date_heure.'</i></small></h4>
-                        <p>'.$description.'</p>
+                      <div class="col-sm-4">
+                        <div class="row param_profil">
+                          <button type="button" class="btn btn-primary supprimer">Supprimer</button>
+                          <button type="button" class="btn btn-primary parametres_profil">Modifier</button>
+                          <form>
+                            <div class="radio">
+                              <label><input type="radio" name="optradio">Public</label>
+                            </div>
+                            <div class="radio">
+                              <label><input type="radio" name="optradio">Réseau</label>
+                            </div>
+                            <div class="radio">
+                              <label><input type="radio" name="optradio">Amis</label>
+                            </div>
+                          </form>
+                        </div>
                       </div>
                       </li>
-
-
-
-
-
-
                       ';
 
                     }
@@ -319,24 +330,7 @@
                   }
                 ?>
               </ul>
-            </div>
-            <div class="col-sm-4">
-              <div class="row param_profil">
-                <button type="button" class="btn btn-primary parametres_profil">Supprimer</button>
-                <button type="button" class="btn btn-primary parametres_profil">Modifier</button>
-                <form>
-                  <div class="radio">
-                    <label><input type="radio" name="optradio">Public</label>
-                  </div>
-                  <div class="radio">
-                    <label><input type="radio" name="optradio">Réseau</label>
-                  </div>
-                  <div class="radio">
-                    <label><input type="radio" name="optradio">Amis</label>
-                  </div>
-                </form>
-              </div>
-            </div>
+
           </div>
         </div>
       </div>
