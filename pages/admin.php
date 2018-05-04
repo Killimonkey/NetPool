@@ -20,7 +20,66 @@
 
             <!-- corps -->
             <div class="col-sm-12 corps">
-              jhjj hjk
+
+
+              <?php
+
+              // Essayer de se connecter à la base de données
+              try
+              {
+                $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', '');
+
+                // Chercher si l'utilisateur existe déjà
+                $requete = $bdd->prepare('SELECT * FROM utilisateur AS u WHERE u.id_utilisateur != ?');
+                $requete->execute(array($_SESSION['$id_utilisateur']));
+
+
+                while($resultat = $requete->fetch())
+                {
+                  $id_utilisateur = $resultat['id_utilisateur'];
+                  echo '<!-- Bloc -->
+                  <div class="row corps">
+
+                      <div class="col-sm-6">
+                      <!-- Photo -->
+                        <div class="col-sm-12">';
+                          //<?php
+                            $pp = $resultat['nom_photo_profil'];
+                            if($pp != "") echo '<img src="../upload/pp/'.$pp.'" class="img-responsive img-circle img_ppreseau" alt="img_ppreseau">';
+                            else echo '<img src="../public/images/pp_template.jpg" class="img-responsive img-circle img_ppreseau" alt="img_ppreseau">'
+                          //
+                        .'
+                        </div>
+                        <!-- Boutons -->
+                        <div class="col-sm-12 infos-amis">';
+                            $pr = $resultat['prenom'];
+                            $nm = $resultat['nom'];
+                            $ps = $resultat['poste'];
+                            echo '<br>'.$pr.' '.$nm.'<br><br>'.$ps.''
+
+                          .'
+                        </div>
+                       </div>
+
+                        <div class="col-sm-6 ">
+                            <a href="essai.php?data='.$id_utilisateur.'"> <button type="button" class="btn btn-primary bouton" >Voir le profil</button> </a>
+                            <a href="desinscrire.php?data='.$id_utilisateur.'"> <button type="button" class="btn btn-primary bouton">Désinscrire</button> </a>
+                        </div>
+
+                    </div>';
+                  $bdd = null;
+              }
+
+              }
+              catch (Exception $e)
+              {
+                die('Erreur : ' . $e->getMessage());
+              }
+              ?>
+
+
+
+
             </div>
           </div>
 
