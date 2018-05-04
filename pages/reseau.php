@@ -72,27 +72,6 @@
           }
           ?>
 
-          <!-- <div class="col-sm-4 corps">
-            <div class="col-sm-6">
-                  <?php/*
-                    $pp = $_SESSION['$profil_utilisateur'];
-                    if($pp != "public/images/pp_template.jpg") echo '<img src="../upload/pp/'.$pp.'" class="img-responsive img-circle img_ppreseau" alt="img_ppreseau">';
-                    else echo '<img src="../'.$pp.'" class="img-responsive img-circle img_pp" alt="img_ppreseau">';
-                */  ?>
-            </div>
-            <div class="col-sm-6">
-                  <?php/*
-                    $pr = $_SESSION['$prenom'];
-                    $nm = $_SESSION['$nom'];
-                    $ps = $_SESSION['$poste'];
-                    echo '<br>'.$pr.' '.$nm.'<br>'.$ps.'';*/
-                  ?>
-            </div>
-            <div class="col-sm-12 ">
-              <button type="button" class="btn btn-primary bouton" data-toggle="modal" data-target="#modal_profil">Voir le profil</button>
-              <button type="button" class="btn btn-primary bouton">Supprimer</button>
-            </div>
-          </div>-->
 
 
           <!-- profil -->
