@@ -36,8 +36,9 @@
 
                 while($resultat = $requete->fetch())
                 {
+                  $id_ami = $resultat['id_utilisateur'];
                   echo '<!-- Bloc -->
-                  <div class="row">
+                  <div class="row corps">
 
                       <div class="col-sm-6">
                       <!-- Photo -->
@@ -45,7 +46,7 @@
                           //<?php
                             $pp = $resultat['nom_photo_profil'];
                             if($pp != "") echo '<img src="../upload/pp/'.$pp.'" class="img-responsive img-circle img_ppreseau" alt="img_ppreseau">';
-                            else echo '<img src="../public/images/pp_template.jpg" class="img-responsive img-circle img_pp" alt="img_ppreseau">'
+                            else echo '<img src="../public/images/pp_template.jpg" class="img-responsive img-circle img_ppreseau" alt="img_ppreseau">'
                           //
                         .'
                         </div>
@@ -58,14 +59,14 @@
 
                           .'
                         </div>
-                        </div>
+                       </div>
 
                         <div class="col-sm-6 ">
-                            <button type="button" class="btn btn-primary bouton" data-toggle="modal" data-target="#modal_profil">Voir le profil</button>
+                            <a href="essai.php?data='.$id_ami.'"> <button type="button" class="btn btn-primary bouton" >Voir le profil</button> </a>
                             <button type="button" class="btn btn-primary bouton">Supprimer</button>
                         </div>
 
-                    </div> ';
+                    </div>';
                   $bdd = null;
               }
 
@@ -88,7 +89,7 @@
             <div class="col-sm-12">Se Connecter</div>
           </div>
 
-          <!-- profil -->
+         <!-- profil -->
           <div class="modal fade" id="modal_profil" tabindex="-1" role="dialog" aria-labelledby="modal_profil" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -98,7 +99,7 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body">-->
 
 
 
