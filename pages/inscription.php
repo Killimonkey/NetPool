@@ -21,7 +21,7 @@
 
         <!-- Image logo -->
         <div class="col-sm-12">
-          <img class="img-responsive img_logo_netpool" src="../public/images/logo_texte.png" alt="img logo_netpool" width="120">
+          <img class="img-responsive img_logo_netpool" src="..public/images/logo_texte.png" alt="img logo_netpool" width="120">
         </div>
 
       </div>

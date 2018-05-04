@@ -68,11 +68,7 @@
               <form action="../php/publication_photo.php" method="post">
 
                 <div class="modal-body">
-                  <!-- Commentaire -->
-                  <div class="form-group">
-                  <label for="comment_photo">Description :</label>
-                  <input type="text" name="comment_photo" class="form-control" required>
-                  </div>
+
 
                   <!-- Photo -->
                   <div class="form-group">
@@ -80,31 +76,6 @@
                   <input type="file" name="photo_publication" class="form-control" required>
                   </div>
 
-                  <!-- Lieu -->
-                  <div class="form-group">
-                  <label for="lieu_publication">Lieu :</label>
-                  <input type="text" name="lieu_publication" class="form-control" required>
-                  </div>
-
-                  <!-- Ressenti -->
-                  <div class="form-group">
-                    <label for="ressenti_publication">Je suis :</label>
-                    <select class="form-control form-add" name="ressenti_publication" required>
-                        <option>Heureux(se)</option>
-                        <option>Triste</option>
-                        <option>En forme</option>
-                        <option>Fatigué(e)</option>
-                        <option>En colère</option>
-                        <option>Blasé(e)</option>
-                        <option>En train de me noyé(e)</option>
-                      </select>
-                  </div>
-
-                  <!-- Activite -->
-                  <div class="form-group">
-                  <label for="activite_publication">Activité :</label>
-                  <input type="text" name="activite_publication" class="form-control" required>
-                  </div>
 
                 </div>
                 <div class="modal-footer">
