@@ -29,14 +29,17 @@
               $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', '');
 
               // Chercher si l'utilisateur existe déjà
-              $requete = $bdd->prepare('SELECT DISTINCT * FROM publication AS p
-                                        WHERE ( p.id_publication IN (SELECT id_publication FROM publie WHERE id_utilisateur = ?)
-                                                OR p.visibilite = "PUBLIC") AND type = "EMPLOI" ORDER BY id_publication DESC');
-              $requete->execute(array($_SESSION['$id_utilisateur']));
+              $requete = $bdd->prepare('SELECT * FROM publication WHERE type = "EMPLOI" ORDER BY id_publication DESC');
+              $requete->execute(array());
 
 
               while($resultat = $requete->fetch())
               {
+                // récupérer utilisateur correspondant
+                $requete_uti = $bdd->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = (SELECT id_utilisateur FROM publie WHERE id_publication = ?)');
+                $requete_uti->execute(array($resultat['id_publication']));
+                $utilisateur = $requete_uti->fetch();
+
                 // Récupérer infos publication dans bdd
                 $id_publication = $resultat['id_publication'];
                 $description = $resultat['description'];
@@ -44,12 +47,12 @@
                 $visibilite = $resultat['visibilite'];
 
                 // Récupérer nom prénom et photo de profil
-                $prenom_nom = strtolower($_SESSION['$prenom'].' '.$_SESSION['$nom']);
-                $profil = $_SESSION['$profil_utilisateur'];
+                $prenom_nom = strtolower($utilisateur['prenom'].' '.$utilisateur['nom']);
+                $profil = $utilisateur['nom_photo_profil'];
 
                 // Récupérer mention aime
                 $requete_aime = $bdd->prepare('SELECT * FROM aime WHERE id_utilisateur = ? AND id_publication = ?');
-                $requete_aime->execute(array($_SESSION['$id_utilisateur'],$id_publication));
+                $requete_aime->execute(array($utilisateur['id_utilisateur'],$id_publication));
                 $aime = $requete_aime->fetch();
 
                 // Récupérer nombre de mentions aime
@@ -88,10 +91,7 @@
                 </div>';
                 if($aime == FALSE) echo '<a href="aime_emploi.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart-empty coeur_acceuil"></span></button></a>';
                 else echo '<a href="aime_plus_emploi.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart coeur_acceuil"></span></button></a>';
-                echo '
-                <button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-edit"></span></button>
-                <button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-share"></span></button>
-                </li>';
+                echo '</li>';
 
             }
               $bdd = null;
