@@ -205,9 +205,7 @@
                 }
                 ?>
 
-
         </ul>
-
 
         </div>
 
@@ -218,5 +216,5 @@
 
   <!-- Affichage du footer -->
   <?php include ("footer.php"); ?>
-
+<!-- https://developer.mozilla.org/fr/docs/Web/Guide/HTML/Formulaires/Validation_donnees_formulaire -->
 </html>
