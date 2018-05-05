@@ -296,7 +296,7 @@
                 </button>
               </div>
 
-              <form action="../php/partager.php" method="post">
+              <form action="../php/commenter.php" method="post">
 
                 <div class="modal-body">
                   <!-- Commentaire -->
@@ -316,29 +316,29 @@
         </div>
 
         <!-- Partager -->
-        <div class="modal fade" id="modal_event" tabindex="-1" role="dialog" aria-labelledby="modal_event" aria-hidden="true">
+        <div class="modal fade" id="modal_partager" tabindex="-1" role="dialog" aria-labelledby="modal_partager" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="modal_event">Publier un événement</h5>
+                <h5 class="modal-title" id="modal_partager">Partager la publication</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
 
-              <form action="../php/publication_event.php" method="post">
+              <form action="../php/partager.php" method="post">
 
                 <div class="modal-body">
                   <!-- Commentaire -->
                   <div class="form-group">
-                  <label for="comment_event">Description :</label>
-                  <input type="text" name="comment_event" class="form-control" required>
+                  <label for="comment_partage">Description :</label>
+                  <input type="text" name="comment_partage" class="form-control" required>
                   </div>
 
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                  <input type="submit" value="Publier" class="btn btn-primary"></input>
+                  <input type="submit" value="Partager" class="btn btn-primary"></input>
                 </div>
               </form>
             </div>
