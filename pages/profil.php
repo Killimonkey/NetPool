@@ -345,8 +345,8 @@
                               echo '&nbsp;<strong>'.$lieu.'</strong>
                               &nbsp;&nbsp;&nbsp;<i> le '.$date_heure.'</i>
                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-heart coeur_accueil"></span>'.$nb_aime;
-                              if($type == "EMPLOI") echo '<br><strong>! OFFRE EMPLOI !</strong>
-                            </small>
+                              if($type == "EMPLOI") echo '<br><strong>! OFFRE EMPLOI !</strong>';
+                            echo '</small>
                           </h4>
                           <p>'.$description.'</p>';
                           if($type == "PUBLI")

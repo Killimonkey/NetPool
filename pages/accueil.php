@@ -252,51 +252,139 @@
                       $photo = $requete_photo->fetch();
                     }
 
-                    echo '
-                    <!-- Une publication -->
-                    <li class="media cadre_publication">
-                    <!-- PP -->
-                    <div class="media-left">';
-
-                    if($profil != "") echo '<img src="../upload/pp/'.$profil.'" class="media-object" style="width:45px">';
-                    else echo '<img src="../public/images/pp_template.jpg" class="media-object" style="width:45px">';
-
-                    echo '
-                    </div>
-                    <!-- Body -->
-                    <div class="media-body">
-                      <h4 class="media-heading">'.$prenom_nom.'
-                        <small>';
-                          if($humeur !="") echo '&nbsp;&nbsp;&nbsp;est <strong>'.$humeur.'</strong>';
-                          if($activite !="") echo '&nbsp;&nbsp;&nbsp;en train de <strong>'.$activite.'</strong>';
-                          echo '&nbsp;<strong>'.$lieu.'</strong>
-                          &nbsp;&nbsp;&nbsp;<i> le '.$date_heure.'</i>
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-heart coeur_accueil"></span>'.$nb_aime.'
-
-                        </small>
-                      </h4>
-                      <p>'.$description.'</p>
-                    ';
-
-                    if($type == "PUBLI")
+                    // Si c'est un partage
+                    if($type == "PARTA")
                     {
+                      // Récupérer les infos de la publication ( du partage )
+                      $requete_partage = $bdd->prepare('SELECT * FROM partage WHERE id_publication = ?');
+                      $requete_partage->execute(array($id_publication));
+                      $partage = $requete_partage->fetch();
+                      $id_mec = $partage['id_mec'];
+                      $id_mec_pub = $partage['id_mec_pub'];
+
+                      // Récupérer l'utilisateur associé à la pulication partagée
+                      $requete_mec = $bdd->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = ?');
+                      $requete_mec->execute(array($id_mec));
+                      $mec = $requete_mec->fetch();
+                      // Récupérer nom prénom et photo de profil
+                      $prenom_nom_mec = strtolower($mec['prenom'].' '.$mec['nom']);
+                      $profil_mec = $mec['nom_photo_profil'];
+
+                      // Récupérer la pulication partagée
+                      $requete_mec_pub = $bdd->prepare('SELECT * FROM publication WHERE id_publication = ?');
+                      $requete_mec_pub->execute(array($id_mec_pub));
+                      $mec_pub = $requete_mec_pub->fetch();
+                      $humeur_mec_pub = $mec_pub['humeur'];
+                      $activite_mec_pub = $mec_pub['activite'];
+                      $lieu_mec_pub = $mec_pub['lieu'];
+                      $date_heure_mec_pub = $mec_pub['date_heure'];
+                      $type_mec_pub = $mec_pub['type'];
+                      $description_mec_pub = $mec_pub['description'];
+                      // Récupérer nombre de mentions aime
+                      $requete_nb_aime_mec = $bdd->prepare('SELECT * FROM aime WHERE id_publication = ?');
+                      $requete_nb_aime_mec->execute(array($id_mec_pub));
+                      $nb_aime_mec_pub = 0;
+                      while($requete_nb_aime_mec->fetch())
+                      {
+                        $nb_aime_mec_pub = $nb_aime_mec_pub + 1;
+                      }
+                      // Récupérer la photo si besoin
+                      if($type_mec_pub == "PUBLI")
+                      {
+                        $requete_photo = $bdd->prepare('SELECT nom_photo_video FROM contient WHERE id_publication = ?');
+                        $requete_photo->execute(array($id_mec_pub));
+                        $photo_mec_pub = $requete_photo->fetch();
+                      }
+
                       echo '
-                        <div class="col-sm-12">
-                          <img src="../upload/publication/'.$photo[0].'" class="taille_image"/>
-                        </div>
+                      <!-- Un partage -->
+                      <li class="media cadre_publication">
+                      <!-- PP -->
+                      <div class="media-left">';
+
+                      if($profil != "") echo '<img src="../upload/pp/'.$profil.'" class="media-object" style="width:45px">';
+                      else echo '<img src="../public/images/pp_template.jpg" class="media-object" style="width:45px">';
+
+                      echo '
+                      </div>
+                      <!-- Body -->
+                      <div class="media-body">
+                        <h4 class="media-heading">'.$prenom_nom.'
+                          <small>
+                            a partagé une publication de '.$prenom_nom_mec.' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; le '.$date_heure.' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-heart coeur_accueil"></span>'.$nb_aime.'<br>';
+                            if($humeur_mec_pub !="") echo '&nbsp;&nbsp;&nbsp;est <strong>'.$humeur_mec_pub.'</strong>';
+                            if($activite_mec_pub !="") echo '&nbsp;&nbsp;&nbsp;en train de <strong>'.$activite_mec_pub.'</strong>';
+                            echo '&nbsp;<strong>'.$lieu_mec_pub.'</strong>
+                            &nbsp;&nbsp;&nbsp;<i> le '.$date_heure_mec_pub.'</i>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-heart coeur_accueil"></span>'.$nb_aime_mec_pub.'
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description : "'.$description_mec_pub.'"
                       ';
+                      if($type_mec_pub == "PUBLI")
+                      {
+                        echo '
+                          <div class="col-sm-12">
+                            <img src="../upload/publication/'.$photo_mec_pub[0].'" class="taille_image"/>
+                          </div>
+                        ';
+                      }
+                      echo '</small>
+                    </h4>';
+
+                      echo '
+                      </div>';
+                      if($aime == FALSE) echo '<a href="aime.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart-empty coeur_acceuil"></span></button></a>';
+                      else echo '<a href="aime_plus.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart coeur_acceuil"></span></button></a>';
+                      echo '
+                      </li>';
                     }
 
-                    echo '
-                    </div>';
-                    if($aime == FALSE) echo '<a href="aime.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart-empty coeur_acceuil"></span></button></a>';
-                    else echo '<a href="aime_plus.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart coeur_acceuil"></span></button></a>';
-                    echo '
-                    <button type="button" class="btn btn-primary option_publier col-sm-4" data-toggle="modal" data-target="#modal_commenter"><span class="glyphicon glyphicon-edit"></span></button>
-                    <button type="button" class="btn btn-primary option_publier col-sm-4" data-toggle="modal" data-target="#modal_partager"><span class="glyphicon glyphicon-share"></span></button>
-                    </li>';
+                    else {
+                      echo '
+                      <!-- Une publication -->
+                      <li class="media cadre_publication">
+                      <!-- PP -->
+                      <div class="media-left">';
 
-                }
+                      if($profil != "") echo '<img src="../upload/pp/'.$profil.'" class="media-object" style="width:45px">';
+                      else echo '<img src="../public/images/pp_template.jpg" class="media-object" style="width:45px">';
+
+                      echo '
+                      </div>
+                      <!-- Body -->
+                      <div class="media-body">
+                        <h4 class="media-heading">'.$prenom_nom.'
+                          <small>';
+                            if($humeur !="") echo '&nbsp;&nbsp;&nbsp;est <strong>'.$humeur.'</strong>';
+                            if($activite !="") echo '&nbsp;&nbsp;&nbsp;en train de <strong>'.$activite.'</strong>';
+                            echo '&nbsp;<strong>'.$lieu.'</strong>
+                            &nbsp;&nbsp;&nbsp;<i> le '.$date_heure.'</i>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-heart coeur_accueil"></span>'.$nb_aime.'
+
+                          </small>
+                        </h4>
+                        <p>'.$description.'</p>
+                      ';
+
+                      if($type == "PUBLI")
+                      {
+                        echo '
+                          <div class="col-sm-12">
+                            <img src="../upload/publication/'.$photo[0].'" class="taille_image"/>
+                          </div>
+                        ';
+                      }
+
+                      echo '
+                      </div>';
+                      if($aime == FALSE) echo '<a href="aime.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart-empty coeur_acceuil"></span></button></a>';
+                      else echo '<a href="aime_plus.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart coeur_acceuil"></span></button></a>';
+                      echo '
+                      <button type="button" class="btn btn-primary option_publier col-sm-4" data-toggle="modal" data-target="#modal_commenter"><span class="glyphicon glyphicon-edit"></span></button>
+                      <a href="../php/partager.php?data='.$id_publication.'&amp;mec='.$utilisateur['id_utilisateur'].'"><button type="button" class="btn btn-primary option_publier col-sm-4" ><span class="glyphicon glyphicon-share"></span></button></a>
+                      </li>';
+                    }
+
+                  }
                   $bdd = null;
                 }
                 catch (Exception $e)
@@ -307,65 +395,6 @@
 
         </ul>
 
-        <!-- Commenter -->
-        <div class="modal fade" id="modal_commenter" tabindex="-1" role="dialog" aria-labelledby="modal_commenter" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modal_commenter">Commenter la publication</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-
-              <form action="../php/commenter.php" method="post">
-
-                <div class="modal-body">
-                  <!-- Commentaire -->
-                  <div class="form-group">
-                  <label for="commentaire">Commentaire :</label>
-                  <input type="text" name="commentaire" class="form-control" required>
-                  </div>
-
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                  <input type="submit" value="Commenter" class="btn btn-primary"></input>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-
-        <!-- Partager -->
-        <div class="modal fade" id="modal_partager" tabindex="-1" role="dialog" aria-labelledby="modal_partager" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modal_partager">Partager la publication</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-
-              <form action="../php/partager.php" method="post">
-
-                <div class="modal-body">
-                  <!-- Commentaire -->
-                  <div class="form-group">
-                  <label for="comment_partage">Description :</label>
-                  <input type="text" name="comment_partage" class="form-control" required>
-                  </div>
-
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                  <input type="submit" value="Partager" class="btn btn-primary"></input>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
 
         </div>
 
