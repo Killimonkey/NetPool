@@ -32,15 +32,15 @@
     {
       $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', '');
       // Modifier le comment
-      $requete = $bdd->prepare('INSERT INTO commentaire (description) VALUES (?)');
-      $requete->execute(array($commentaire));
-      $requete = $bdd->prepare('SELECT id_commentaire FROM commentaire WHERE id_commentaire');
-      $requete->execute(array($commentaire));
-      $id_pub = $requete->fetch();
+      $requete = $bdd->prepare('INSERT INTO commentaire (description,date_heure) VALUES (?,?)');
+      $requete->execute(array($commentaire,$datetime));
+      $requete = $bdd->prepare('SELECT id_commentaire FROM commentaire WHERE date_heure = ?');
+      $requete->execute(array($datetime));
+      $id_commentaire = $requete->fetch();
       $requete = $bdd->prepare('INSERT INTO ecrit (id_utilisateur,id_commentaire) VALUES (?,?)');
-      $requete->execute(array($_SESSION['$id_utilisateur'],$id_pub[0]));
+      $requete->execute(array($_SESSION['$id_utilisateur'],$id_commentaire[0]));
       $requete = $bdd->prepare('INSERT INTO est_ecrit_dans (id_publication,id_commentaire) VALUES (?,?)');
-      $requete->execute(array($id_publication,$id_pub[0]));
+      $requete->execute(array($id_publication,$id_commentaire[0]));
       // Récupérer le résultat
       $resultat = $requete->fetch();
       // Enregistrer dans la variable

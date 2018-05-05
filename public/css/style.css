@@ -167,6 +167,17 @@ input
   border: 1px solid #0F5F81 !important;/*bleu-fonce*/
 }
 
+.div_commentaire
+{
+  border: 1px solid #0F5F81 !important;/*bleu-fonce*/
+  background-color: #C0C0C0 !important;
+}
+.div_commentaires
+{
+  border: 1px solid #7097AD !important;/*bleu-gris*/
+  background-color: white !important;
+}
+
 /*Profil*/
 .img_couv
 {

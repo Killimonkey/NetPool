@@ -172,7 +172,7 @@
                   $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', '');
 
                   // Chercher si l'utilisateur existe déjà
-                  $requete = $bdd->prepare('SELECT DISTINCT * FROM publication AS p WHERE ( p.id_publication IN (SELECT id_publication FROM publie WHERE id_utilisateur = ?)
+                  $requete = $bdd->prepare('SELECT DISTINCT * FROM publication AS p WHERE ( (p.id_publication IN (SELECT id_publication FROM publie WHERE id_utilisateur = ?)
                                                                                             OR p.visibilite = "PUBLIC"
                                                                                             OR (
                                                                                                   p.visibilite = "RESEAU"
@@ -195,8 +195,8 @@
                                                                                                       (SELECT id_utilisateur FROM publie WHERE id_publication = p.id_publication) IN (SELECT utilisateur_2 FROM reseau WHERE utilisateur_1 = ? AND check_ami="TRUE")
 
                                                                                                   )
-                                                                                                )
-                                                                                            AND type != "EMPLOI") ORDER BY id_publication DESC');
+                                                                                                ))
+                                                                                            AND p.type != "EMPLOI") ORDER BY id_publication DESC');
                   $requete->execute(array($_SESSION['$id_utilisateur'],$_SESSION['$id_utilisateur'],$_SESSION['$id_utilisateur'],$_SESSION['$id_utilisateur'],$_SESSION['$id_utilisateur']));
 
 
@@ -382,12 +382,12 @@
                       <a href="../php/partager.php?data='.$id_publication.'&amp;mec='.$utilisateur['id_utilisateur'].'"><button type="button" class="btn btn-primary option_publier col-sm-4" ><span class="glyphicon glyphicon-share"></span></button></a>';
 
                       // Récupérer les commentaires de la publication
-                      $commentaires = $bdd->prepare('SELECT * FROM commentaire WHERE id_commentaire IN (SELECT id_commentaire FROM est_ecrit_dans WHERE id_publication = ?)');
-                      $commentaires->execute(array($id_publication));
+                      $requete_commentaires = $bdd->prepare('SELECT * FROM commentaire WHERE id_commentaire IN (SELECT id_commentaire FROM est_ecrit_dans WHERE id_publication = ?)');
+                      $requete_commentaires->execute(array($id_publication));
 
-                      echo '<div>';
+                      echo '<br><br><div class="div_commentaire"> <strong>Commentaires :</strong>';
 
-                      while($commentaires->fetch())
+                      while($commentaire = $requete_commentaires->fetch())
                       {
                         // Récupérer l'utilisateur auteur
                         $requete_auteur = $bdd->prepare('SELECT id_utilisateur FROM ecrit WHERE id_commentaire = ?');
@@ -398,10 +398,11 @@
                         $auteur = $requete_auteur->fetch();
                         $prenom_nom_auteur = strtolower($auteur['prenom'].' '.$auteur['nom']);
                         $description_commentaire = $commentaire['description'];
+                        $date_heure_commentaire = $commentaire['date_heure'];
 
                         echo '
-                          <div>
-                            <p>par '.$prenom_nom_auteur.' : "'.$description_commentaire.'"</p>
+                          <div class="div_commentaires">
+                            <p>par <strong>'.$prenom_nom_auteur.'</strong> le '.$date_heure_commentaire.' : "'.$description_commentaire.'"</p>
                           </div>
                         ';
                       }
