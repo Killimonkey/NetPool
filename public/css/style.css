@@ -253,7 +253,7 @@
   display: block !important;
   margin-left: auto !important;
   margin-right: auto !important;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .se_connecter

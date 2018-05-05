@@ -2,7 +2,7 @@
 <html lang="fr">
 
 <!-- Affichage du head -->
-<?php include ("head.php"); ?>
+<?php include ("../pages/head.php"); ?>
 
   <!-- Affichage du corps -->
   <body>

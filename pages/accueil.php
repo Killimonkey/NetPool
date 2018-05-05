@@ -30,7 +30,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="modal_event">Evénement</h5>
+                <h5 class="modal-title" id="modal_event">Publier un événement</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -55,30 +55,30 @@
           </div>
         </div>
 
-        <!-- Photo -->
+        <!-- Popup publier photo -->
         <div class="modal fade" id="modal_photo" tabindex="-1" role="dialog" aria-labelledby="modal_photo" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="modal_photo">Photo</h5>
+                <h5 class="modal-title" id="modal_photo">Publier une photo</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <form action="../php/publication_photo.php" method="post">
+
+              <form action="../php/publication_photo.php" method="post" enctype="multipart/form-data">
 
                 <div class="modal-body">
-
                   <!-- Commentaire -->
                   <div class="form-group">
                   <label for="comment_photo">Description :</label>
                   <input type="text" name="comment_photo" class="form-control" required>
                   </div>
 
-                  <!-- Photo -->
+                  <!-- photo_publi -->
                   <div class="form-group">
-                  <label for="photo_publication">Photo :</label>
-                  <input type="file" name="photo_publication" class="form-control" required>
+                  <label for="photo_publi">Photo :</label>
+                  <input type="file" name="photo_publi" class="form-control" required>
                   </div>
 
                   <!-- Lieu -->
@@ -108,16 +108,15 @@
                   </div>
 
                 </div>
+
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                  <input type="submit" value="Publier" class="btn btn-primary"></input>
+                  <button type="button" class="btn btn-info" data-dismiss="modal">Retour</button>
+                  <input type="submit" value="Valider" class="btn btn-primary"></input>
                 </div>
               </form>
             </div>
           </div>
         </div>
-
-
       </div>
 
       <div class="row">

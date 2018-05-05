@@ -63,7 +63,7 @@
 
                         <div class="col-sm-6 ">
                             <a href="essai.php?data='.$id_utilisateur.'"> <button type="button" class="btn btn-primary bouton" >Voir le profil</button> </a>
-                            <a href="desinscrire.php?data='.$id_utilisateur.'"> <button type="button" class="btn btn-primary bouton">Désinscrire</button> </a>
+                            <a href="desinscrire.php?data='.$id_utilisateur.'"> <button type="button" class="btn btn-primary se_deconnecter">Désinscrire</button> </a>
                         </div>
 
                     </div>';
