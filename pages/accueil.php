@@ -162,6 +162,13 @@
                     $prenom_nom = strtolower($utilisateur['prenom'].' '.$utilisateur['nom']);
                     $profil = $utilisateur['nom_photo_profil'];
 
+                    if($type == "PUBLI")
+                    {
+                      $requete_photo = $bdd->prepare('SELECT nom_photo_video FROM contient WHERE id_publication = ?');
+                      $requete_photo->execute(array($id_publication));
+                      $photo = $requete_photo->fetch();
+                    }
+
                     echo '
                     <!-- Une publication -->
                     <li class="media cadre_publication">
@@ -173,10 +180,21 @@
                     <div class="media-body">
                       <h4 class="media-heading">'.$prenom_nom.' <small><i>'.$date_heure.'</i></small></h4>
                       <p>'.$description.'</p>
-                    </div>
-                  </li>
+                    ';
 
-                ';
+                    if($type == "PUBLI")
+                    {
+                      echo '
+                        <div class="col-sm-12">
+                          <img src="../upload/publication/'.$photo[0].'" class="taille_image"/>
+                        </div>
+                        <>
+                      ';
+                    }
+
+                    echo '
+                    </div>
+                    </li>';
 
                 }
                   $bdd = null;
@@ -188,7 +206,7 @@
                 ?>
 
 
-</ul>
+        </ul>
 
 
         </div>
