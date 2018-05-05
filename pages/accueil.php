@@ -83,27 +83,28 @@
 
                   <!-- Lieu -->
                   <div class="form-group">
-                  <label for="lieu_publication">Lieu :</label>
+                  <label for="lieu_publication">Je suis...(lieu)</label>
                   <input type="text" name="lieu_publication" class="form-control" required>
                   </div>
 
                   <!-- Ressenti -->
                   <div class="form-group">
-                    <label for="ressenti_publication">Je suis :</label>
+                    <label for="ressenti_publication">Je suis...(ressenti)</label>
                     <select class="form-control form-add" name="ressenti_publication" required>
+                        <option></option>
                         <option>Heureux(se)</option>
                         <option>Triste</option>
                         <option>En forme</option>
                         <option>Fatigué(e)</option>
                         <option>En colère</option>
                         <option>Blasé(e)</option>
-                        <option>En train de me noyé(e)</option>
+                        <option>En train de me noyer</option>
                       </select>
                   </div>
 
                   <!-- Activite -->
                   <div class="form-group">
-                  <label for="activite_publication">Activité :</label>
+                  <label for="activite_publication">Je suis en train de :</label>
                   <input type="text" name="activite_publication" class="form-control" required>
                   </div>
 
@@ -152,9 +153,19 @@
                     $date_heure = $resultat['date_heure'];
                     $activite = $resultat['activite'];
                     $humeur = $resultat['humeur'];
+                    $lieu = $resultat['lieu'];
                     $visibilite = $resultat['visibilite'];
                     $check_suppression = $resultat['check_suppression'];
                     $type = $resultat['type'];
+
+                    if($humeur == "") $humeur = "";
+                    else if($humeur == "HEUREUX") $humeur = "heureux(se)";
+                    else if($humeur == "TRISTE") $humeur = "triste";
+                    else if($humeur == "FORME") $humeur = "en forme";
+                    else if($humeur == "FATIGUE") $humeur = "fatigué(e)";
+                    else if($humeur == "COLERE") $humeur = "en colère";
+                    else if($humeur == "BLASE") $humeur = "blasé(e)";
+                    else if($humeur == "NOYE") $humeur = "noyé(e)";
 
                     $requete_utilisateur = $bdd->prepare('SELECT * FROM utilisateur WHERE id_utilisateur IN (SELECT id_utilisateur FROM publie WHERE id_publication = ?)');
                     $requete_utilisateur->execute(array($id_publication));
@@ -173,12 +184,23 @@
                     <!-- Une publication -->
                     <li class="media cadre_publication">
                     <!-- PP -->
-                    <div class="media-left">
-                      <img src="../upload/pp/'.$profil.'" class="media-object" style="width:45px">
+                    <div class="media-left">';
+
+                    if($profil != "") echo '<img src="../upload/pp/'.$profil.'" class="media-object" style="width:45px">';
+                    else echo '<img src="../public/images/pp_template.jpg" class="media-object" style="width:45px">';
+
+                    echo '
                     </div>
                     <!-- Body -->
                     <div class="media-body">
-                      <h4 class="media-heading">'.$prenom_nom.' <small><i>'.$date_heure.'</i></small></h4>
+                      <h4 class="media-heading">'.$prenom_nom.'
+                        <small>';
+                          if($humeur !="") echo '&nbsp;&nbsp;&nbsp;est <strong>'.$humeur.'</strong>';
+                          if($activite !="") echo '&nbsp;&nbsp;&nbsp;en train de <strong>'.$activite.'</strong>';
+                          echo '&nbsp;<strong>'.$lieu.'</strong>
+                          &nbsp;&nbsp;&nbsp;<i> le '.$date_heure.'</i>
+                        </small>
+                      </h4>
                       <p>'.$description.'</p>
                     ';
 
@@ -188,7 +210,6 @@
                         <div class="col-sm-12">
                           <img src="../upload/publication/'.$photo[0].'" class="taille_image"/>
                         </div>
-                        <>
                       ';
                     }
 
