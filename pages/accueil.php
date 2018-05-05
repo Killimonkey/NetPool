@@ -55,6 +55,38 @@
           </div>
         </div>
 
+        <!-- Emplois -->
+        <div class="modal fade" id="modal_emploi" tabindex="-1" role="dialog" aria-labelledby="modal_emploi" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modal_emploi">Publier un emploi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <form action="../php/publication_emploi.php" method="post">
+
+                <div class="modal-body">
+
+
+                  <!-- Description -->
+                  <div class="form-group">
+                  <label for="comment_event">Detail de l'offre d'emploi :</label>
+                  <input type="text" name="comment_event" class="form-control" required>
+                  </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                  <input type="submit" value="Publier" class="btn btn-primary"></input>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
         <!-- Popup publier photo -->
         <div class="modal fade" id="modal_photo" tabindex="-1" role="dialog" aria-labelledby="modal_photo" aria-hidden="true">
           <div class="modal-dialog" role="document">
