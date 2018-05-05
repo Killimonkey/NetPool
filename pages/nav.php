@@ -33,10 +33,7 @@
           <li>
             <a class="mot_nav" href="reseau.php">Mon réseau</a>
           </li>
-          <!-- Lien vers notifications -->
-          <li>
-            <a class="mot_nav" href="notifications.php">Notifications</a>
-          </li>
+
           <!-- Lien vers offres d'emplois -->
           <li>
             <a class="mot_nav" href="emplois.php">Offres d'emplois</a>

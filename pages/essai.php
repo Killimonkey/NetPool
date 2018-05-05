@@ -86,7 +86,7 @@
                 if($cv != "")
                 {
                   echo '<a href="../upload/cv/'.$cv.'"download="'.$cv.'">
-                          <button type="button" class="btn btn-success bouton_cv" data-dismiss="modal">Son CV</button>
+                          <button type="button" class="btn btn-success bouton_cv" data-dismiss="modal"><span class="glyphicon glyphicon-cloud-download"></span> Son CV</button>
                         </a>';
                 }
                ?>

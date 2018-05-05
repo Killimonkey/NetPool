@@ -267,8 +267,8 @@
 
                     echo '
                     </div>';
-                    if($aime == FALSE) echo '<a href="aime.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart-empty"></span></button></a>';
-                    else echo '<a href="aime_plus.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart"></span></button></a>';
+                    if($aime == FALSE) echo '<a href="aime.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart-empty coeur_acceuil"></span></button></a>';
+                    else echo '<a href="aime_plus.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart coeur_acceuil"></span></button></a>';
                     echo '
                     <button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-edit"></span></button>
                     <button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-share"></span></button>
@@ -288,7 +288,7 @@
         </div>
 
       </div>
-    </div>  
+    </div>
 
   </body>
 

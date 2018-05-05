@@ -45,7 +45,7 @@
 
           <!-- Modifier profil -->
           <div class="col-sm-12">
-            <button type="button" class="btn btn-primary parametres_profil" data-toggle="modal" data-target="#modal_modif">Modifier mon profil</button>
+            <button type="button" class="btn btn-primary parametres_profil" data-toggle="modal" data-target="#modal_modif"><span class="glyphicon glyphicon-pencil"></span> Modifier mon profil</button>
 
             <!-- Popup modifier profil -->
             <div class="modal fade" id="modal_modif" tabindex="-1" role="dialog" aria-labelledby="modal_modif" aria-hidden="true">
@@ -249,7 +249,7 @@
                 if($nom_cv != "")
                 {
                   echo '<a href="../upload/cv/'.$nom_cv.'"download="'.$nom_cv.'">
-                          <button type="button" class="btn btn-success bouton_cv" data-dismiss="modal">Mon CV</button>
+                          <button type="button" class="btn btn-success bouton_cv" data-dismiss="modal"><span class="glyphicon glyphicon-cloud-download"></span> Mon CV</button>
                         </a>';
                 }
                ?>
@@ -350,7 +350,7 @@
                       </div>
                       <div class="col-sm-4">
                         <div class="row param_profil">
-                          <a href="supp_pub.php?data='.$id_publication.'"> <button type="button" class="btn btn-primary supprimer">Supprimer</button>
+                          <a href="supp_pub.php?data='.$id_publication.'"> <button type="button" class="btn btn-primary supprimer"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>
                           <form>
                             <div class="radio">
                               <label><input type="radio" name="optradio">Public</label>
@@ -365,7 +365,7 @@
                         </div>
                       </div>';
                       if($aime == FALSE) echo '<a href="aime_moi.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart-empty"></span></button></a>';
-                      else echo '<a href="aime_plus_moi.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart"></span></button></a>';
+                      else echo '<a href="aime_plus_moi.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart coeur_acceuil"></span></button></a>';
                       echo '
                       <button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-edit"></span></button>
                       <button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-share"></span></button>
