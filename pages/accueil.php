@@ -73,8 +73,8 @@
 
                   <!-- Description -->
                   <div class="form-group">
-                  <label for="comment_event">Detail de l'offre d'emploi :</label>
-                  <input type="text" name="comment_event" class="form-control" required>
+                  <label for="comment_emploi">Detail de l'offre d'emploi :</label>
+                  <input type="text" name="comment_emploi" class="form-control" required>
                   </div>
 
                 </div>
@@ -288,7 +288,7 @@
         </div>
 
       </div>
-    </div>  
+    </div>
 
   </body>
 

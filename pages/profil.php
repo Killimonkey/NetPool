@@ -289,6 +289,16 @@
                       $check_suppression = $resultat['check_suppression'];
                       $type = $resultat['type'];
 
+                      // Traduire de bdd à affichage
+                      if($humeur == "") $humeur = "";
+                      else if($humeur == "HEUREUX") $humeur = "heureux(se)";
+                      else if($humeur == "TRISTE") $humeur = "triste";
+                      else if($humeur == "FORME") $humeur = "en forme";
+                      else if($humeur == "FATIGUE") $humeur = "fatigué(e)";
+                      else if($humeur == "COLERE") $humeur = "en colère";
+                      else if($humeur == "BLASE") $humeur = "blasé(e)";
+                      else if($humeur == "NOYE") $humeur = "noyé(e)";
+
                       // Récupérer prenom nom et photo de l'utilisateur
                       $prenom_nom = strtolower($_SESSION['$prenom'].' '.$_SESSION['$nom']);
                       $profil = $_SESSION['$profil_utilisateur'];
@@ -333,7 +343,8 @@
                               if($activite !="") echo '&nbsp;&nbsp;&nbsp;en train de <strong>'.$activite.'</strong>';
                               echo '&nbsp;<strong>'.$lieu.'</strong>
                               &nbsp;&nbsp;&nbsp;<i> le '.$date_heure.'</i>
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-heart coeur_accueil"></span>'.$nb_aime.'
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-heart coeur_accueil"></span>'.$nb_aime;
+                              if($type == "EMPLOI") echo '<br><strong>! OFFRE EMPLOI !</strong>
                             </small>
                           </h4>
                           <p>'.$description.'</p>';
