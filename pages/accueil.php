@@ -20,7 +20,7 @@
 
           <!--options -->
           <button type="button" class="btn btn-primary option_publier col-sm-4" data-toggle="modal" data-target="#modal_event">Evénement</button>
-          <button type="button" class="btn btn-primary option_publier col-sm-4" data-toggle="modal" data-target="#modal_photo">Photo</button>
+          <button type="button" class="btn btn-primary option_publier col-sm-4" data-toggle="modal" data-target="#modal_photo"><span class="glyphicon glyphicon-picture"></span></button>
           <button type="button" class="btn btn-primary option_publier col-sm-4" data-toggle="modal" data-target="#modal_emploi">Emploi</button>
         </div>
 
@@ -247,6 +247,9 @@
 
                     echo '
                     </div>
+                    <button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart-empty"></span></button>
+                    <button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-edit"></span></button>
+                    <button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-share"></span></button>
                     </li>';
 
                 }
@@ -264,6 +267,34 @@
 
       </div>
     </div>
+
+    <div class="centerer">
+
+
+      <div class="wrap">
+        <a class="btn-5" href="#">Slice</a>
+      </div>
+
+    </div>
+
+<script type="text/javascript">
+$(function() {
+  $('.btn-6')
+    .on('mouseenter', function(e) {
+            var parentOffset = $(this).offset(),
+            relX = e.pageX - parentOffset.left,
+            relY = e.pageY - parentOffset.top;
+            $(this).find('span').css({top:relY, left:relX})
+    })
+    .on('mouseout', function(e) {
+            var parentOffset = $(this).offset(),
+            relX = e.pageX - parentOffset.left,
+            relY = e.pageY - parentOffset.top;
+        $(this).find('span').css({top:relY, left:relX})
+    });
+  $('[href=#]').click(function(){return false});
+});
+</script>
 
   </body>
 
