@@ -7,12 +7,17 @@
 
   // On recupere les valeurs
   $commentaire = isset($_POST["commentaire"])?$_POST["commentaire"] : "";
+  $id_publication = isset($_POST["id_publication"])?$_POST["id_publication"] : "";
   $error = "";
 
   // On teste si les champs ne sont pas vide sinon on affiche un message d'erreur
   if($commentaire == "")
   {
    $error .= "Pas de commentaire <br/>";
+  }
+  if($id_publication == "")
+  {
+   $error .= "Pas d'id_publication<br>";
   }
 
   // Si il n'y a pas d'erreur
@@ -25,11 +30,11 @@
     // Essayer de se connecter à la base de données
     try
     {
-      $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', 'root');
+      $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', '');
       // Modifier le comment
       $requete = $bdd->prepare('INSERT INTO commentaire (description) VALUES (?)');
       $requete->execute(array($commentaire));
-      $requete = $bdd->prepare('SELECT id_commentaire FROM commentaire ');
+      $requete = $bdd->prepare('SELECT id_commentaire FROM commentaire WHERE id_commentaire');
       $requete->execute(array($commentaire));
       $id_pub = $requete->fetch();
       $requete = $bdd->prepare('INSERT INTO ecrit (id_utilisateur,id_commentaire) VALUES (?,?)');
@@ -41,7 +46,6 @@
       // Enregistrer dans la variable
       $_SESSION['$commentaire'] = $commentaire;
       $bdd = null;
-      header('Location:../pages/accueil.php');
     }
     catch (Exception $e)
     {
@@ -49,4 +53,5 @@
     }
 
   }
+  header('Location:../pages/accueil.php');
 ?>
