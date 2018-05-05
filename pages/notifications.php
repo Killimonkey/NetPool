@@ -35,9 +35,30 @@
               <button type="button" class="btn btn-primary bouton">Voir le Profil</button>
 
             </div>
-            </div>
+
+
           </div>
         </div>
+        <div class="panel panel-primary">
+
+          <div class="panel-body">Contenu</div>
+        </div>
+        <div class="panel panel-primary">
+
+          <div class="panel-body">Contenu</div>
+        </div>
+        <div class="panel panel-primary">
+
+          <div class="panel-body">Contenu</div>
+        </div>
+        <div class="panel panel-primary">
+
+          <div class="panel-body">Contenu</div>
+        </div>
+
+
+
+          </div>
 
         </div>
       </div>
