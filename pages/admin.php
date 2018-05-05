@@ -16,10 +16,10 @@
 
           <!-- Supprimer -->
           <div class="col-sm-6">
-            <div class="col-sm-12 titre">Supprimer</div>
+            <div class="col-sm-12 titre_supprimer_admin">Supprimer</div>
 
             <!-- corps -->
-            <div class="col-sm-12 corps">
+            <div class="col-sm-12 corps_supprimer_admin">
 
 
               <?php
@@ -38,7 +38,7 @@
                 {
                   $id_utilisateur = $resultat['id_utilisateur'];
                   echo '<!-- Bloc -->
-                  <div class="row corps">
+                  <div class="row corps_supprimer_admin">
 
                       <div class="col-sm-6">
                       <!-- Photo -->
@@ -85,10 +85,10 @@
 
           <!--Ajouter-->
           <div class="col-sm-6">
-            <div class="col-sm-12 titre">Ajouter</div>
+            <div class="col-sm-12 titre_ajouter_admin">Ajouter</div>
 
             <!-- Corps -->
-            <div class="col-sm-12 corps">
+            <div class="col-sm-12 corps_ajouter_admin">
               <!-- option Ajouter-->
               <!-- Texte droite -->
               <form id="mon_formulaire2" action="../php/ajout.php" method="post">
