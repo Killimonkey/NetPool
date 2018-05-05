@@ -5,7 +5,7 @@
 <?php include ("head.php"); ?>
 
   <!-- Affichage du corps -->
-  <body class="body">
+  <body>
     <div class="container-fluid">
       <div class="row">
 
@@ -14,14 +14,14 @@
 
           <!-- Texte gauche -->
           <div class="col-sm-6 texte_bienvenue">
-            Bienvenue sur NetPool
+
           </div>
 
         </div>
 
         <!-- Image logo -->
         <div class="col-sm-12">
-          <img class="img-responsive img_logo_netpool" src="..public/images/logo_texte.png" alt="img logo_netpool" width="120">
+          <img class="img-responsive img_logo_netpool" src="../public/images/logo_texte.png" alt="img logo_netpool" width="120">
         </div>
 
       </div>
@@ -120,7 +120,7 @@
                 // Bouton pour recommencer
                 echo '<div>
                   <form action="../index.php">
-                    <input type="submit" value="Connexion" />
+                    <input type="submit" class="parametres_profil" value="Connexion" />
                   </form>
                 </div>';
               }
