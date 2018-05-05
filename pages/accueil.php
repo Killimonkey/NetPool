@@ -215,7 +215,7 @@
 
                     // Traduire de bdd à affichage
                     if($humeur == "") $humeur = "";
-                    else if($humeur == "HEUREUX") $humeur = "heureux(se)";
+                    else if($humeur == "JOYEUX") $humeur = "heureux(se)";
                     else if($humeur == "TRISTE") $humeur = "triste";
                     else if($humeur == "FORME") $humeur = "en forme";
                     else if($humeur == "FATIGUE") $humeur = "fatigué(e)";
