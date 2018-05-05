@@ -82,7 +82,14 @@
               <?php echo $email; ?>
             </div>
             <div class="col-sm-6">
-              <button type="button" class="btn btn-success bouton_cv" data-dismiss="modal">Son CV</button>
+              <?php
+                if($cv != "")
+                {
+                  echo '<a href="../upload/cv/'.$cv.'"download="'.$cv.'">
+                          <button type="button" class="btn btn-success bouton_cv" data-dismiss="modal">Son CV</button>
+                        </a>';
+                }
+               ?>
             </div>
           </div>
 
