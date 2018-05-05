@@ -234,35 +234,7 @@
         </div>
 
       </div>
-    </div>
-
-    <div class="centerer">
-
-
-      <div class="wrap">
-        <a class="btn-5" href="#">Slice</a>
-      </div>
-
-    </div>
-
-<script type="text/javascript">
-$(function() {
-  $('.btn-6')
-    .on('mouseenter', function(e) {
-            var parentOffset = $(this).offset(),
-            relX = e.pageX - parentOffset.left,
-            relY = e.pageY - parentOffset.top;
-            $(this).find('span').css({top:relY, left:relX})
-    })
-    .on('mouseout', function(e) {
-            var parentOffset = $(this).offset(),
-            relX = e.pageX - parentOffset.left,
-            relY = e.pageY - parentOffset.top;
-        $(this).find('span').css({top:relY, left:relX})
-    });
-  $('[href=#]').click(function(){return false});
-});
-</script>
+    </div>  
 
   </body>
 
