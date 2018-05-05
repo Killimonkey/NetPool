@@ -93,16 +93,19 @@
 body
 {
   font-size: 20px !important;
+  font-family: Trebuchet, Helvetica, Arial, sans-serif !important;
 }
 
 button
 {
   font-size: 18px !important;
+  font-family: Trebuchet, Helvetica, Arial, sans-serif !important;
 }
 
 input
 {
   font-size: 18px !important;
+  font-family: Trebuchet, Helvetica, Arial, sans-serif !important;
 }
 
 .body_profil
@@ -113,7 +116,7 @@ input
 /*Accueil*/
 .coeur_acceuil
 {
-  color: #0F5F81 !important;/*bleu-fonce*/
+  color: #831616 !important;/*rouge-fonce*/
 }
 
 .publier
@@ -475,4 +478,15 @@ input
 .titre_emploi
 {
   background-color: #013356 !important;
+}
+
+/* footer*/
+.footer
+{
+  background-color: #0F5F81;/*bleu-fonce*/
+  color: white;
+  padding-top: 50px;
+  padding-bottom: 10px;
+  font-size: 12px;
+  margin-top: 50px;
 }

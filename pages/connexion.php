@@ -7,7 +7,7 @@
   <!-- Affichage du corps -->
   <body>
     <div class="container-fluid">
-      <div class="row">
+        <div class="row">
 
         <!-- Bandeau bleu -->
         <div class="col-sm-12 bandeau_bleu">
@@ -25,7 +25,6 @@
         </div>
 
       </div>
-
 
       <div class="row">
         <!-- Texte gauche bas -->
