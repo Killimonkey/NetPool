@@ -148,6 +148,7 @@
 
                   while($resultat = $requete->fetch())
                   {
+                    // Récupérer infos publication dans bdd
                     $id_publication = $resultat['id_publication'];
                     $description = $resultat['description'];
                     $date_heure = $resultat['date_heure'];
@@ -158,6 +159,7 @@
                     $check_suppression = $resultat['check_suppression'];
                     $type = $resultat['type'];
 
+                    // Traduire de bdd à affichage
                     if($humeur == "") $humeur = "";
                     else if($humeur == "HEUREUX") $humeur = "heureux(se)";
                     else if($humeur == "TRISTE") $humeur = "triste";
@@ -167,11 +169,27 @@
                     else if($humeur == "BLASE") $humeur = "blasé(e)";
                     else if($humeur == "NOYE") $humeur = "noyé(e)";
 
+                    // Récupérer l'utilisateur associé
                     $requete_utilisateur = $bdd->prepare('SELECT * FROM utilisateur WHERE id_utilisateur IN (SELECT id_utilisateur FROM publie WHERE id_publication = ?)');
                     $requete_utilisateur->execute(array($id_publication));
                     $utilisateur = $requete_utilisateur->fetch();
+                    // Récupérer nom prénom et photo de profil
                     $prenom_nom = strtolower($utilisateur['prenom'].' '.$utilisateur['nom']);
                     $profil = $utilisateur['nom_photo_profil'];
+
+                    // Récupérer mention aime
+                    $requete_aime = $bdd->prepare('SELECT * FROM aime WHERE id_utilisateur = ? AND id_publication = ?');
+                    $requete_aime->execute(array($_SESSION['$id_utilisateur'],$id_publication));
+                    $aime = $requete_aime->fetch();
+
+                    // Récupérer nombre de mentions aime
+                    $requete_nb_aime = $bdd->prepare('SELECT * FROM aime WHERE id_publication = ?');
+                    $requete_nb_aime->execute(array($id_publication));
+                    $nb_aime = 0;
+                    while($requete_nb_aime->fetch())
+                    {
+                      $nb_aime = $nb_aime + 1;
+                    }
 
                     if($type == "PUBLI")
                     {
@@ -199,6 +217,8 @@
                           if($activite !="") echo '&nbsp;&nbsp;&nbsp;en train de <strong>'.$activite.'</strong>';
                           echo '&nbsp;<strong>'.$lieu.'</strong>
                           &nbsp;&nbsp;&nbsp;<i> le '.$date_heure.'</i>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-heart coeur_accueil"></span>'.$nb_aime.'
+
                         </small>
                       </h4>
                       <p>'.$description.'</p>
@@ -214,8 +234,10 @@
                     }
 
                     echo '
-                    </div>
-                    <button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart-empty"></span></button>
+                    </div>';
+                    if($aime == FALSE) echo '<a href="aime.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart-empty"></span></button></a>';
+                    else echo '<a href="aime_plus.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart"></span></button></a>';
+                    echo '
                     <button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-edit"></span></button>
                     <button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-share"></span></button>
                     </li>';
