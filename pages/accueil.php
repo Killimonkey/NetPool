@@ -142,7 +142,7 @@
                   // Chercher si l'utilisateur existe déjà
                   $requete = $bdd->prepare('SELECT DISTINCT * FROM publication AS p
                                             WHERE ( p.id_publication IN (SELECT id_publication FROM publie WHERE id_utilisateur = ?)
-                                                    OR p.visibilite = "PUBLIC") ORDER BY id_publication DESC');
+                                                    OR p.visibilite = "PUBLIC") AND type != "EMPLOI" ORDER BY id_publication DESC');
                   $requete->execute(array($_SESSION['$id_utilisateur']));
 
 

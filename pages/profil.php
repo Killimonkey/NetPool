@@ -244,10 +244,16 @@
               <?php echo $ma; ?>
             </div>
             <div class="col-sm-6">
+              <?php
+                $nom_cv = $_SESSION['$cv'];
+                if($nom_cv != "")
+                {
+                  echo '<a href="../upload/cv/'.$nom_cv.'"download="'.$nom_cv.'">
+                          <button type="button" class="btn btn-success bouton_cv" data-dismiss="modal">Mon CV</button>
+                        </a>';
+                }
+               ?>
 
-            <a href="../upload/cv/cv-cou-cou-04-05-2018-11-11-58.docx"download="cv-cou-cou-04-05-2018-11-11-58">
-              <button type="button" class="btn btn-success bouton_cv" data-dismiss="modal">Mon CV</button>
-            </a>
 
             </div>
           </div>
@@ -303,8 +309,7 @@
                       </div>
                       <div class="col-sm-4">
                         <div class="row param_profil">
-                          <button type="button" class="btn btn-primary supprimer">Supprimer</button>
-                          <button type="button" class="btn btn-primary parametres_profil">Modifier</button>
+                          <a href="supp_pub.php?data='.$id_publication.'"> <button type="button" class="btn btn-primary supprimer">Supprimer</button>
                           <form>
                             <div class="radio">
                               <label><input type="radio" name="optradio">Public</label>
