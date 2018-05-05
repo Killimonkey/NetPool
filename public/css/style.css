@@ -187,6 +187,9 @@ input
   border: 1px solid #0F5F81; /*bleu-fonce*/
   margin-top: -85px;
   margin-bottom: 10px;
+  opacity: 1 !important;
+  transition: .5s ease !important;
+  backface-visibility: hidden !important;
 }
 
 .img_ppreseau
@@ -489,4 +492,34 @@ input
   padding-bottom: 10px;
   font-size: 12px;
   margin-top: 50px;
+}
+
+
+
+/*pp*/
+.middle {
+  transition: .5s ease !important;
+  opacity: 0 !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  -ms-transform: translate(-50%, -50%) !important;
+  text-align: center !important;
+}
+
+.container:hover .image_pp {
+  opacity: 0.3 !important;
+}
+
+.container:hover .middle {
+  opacity: 1 !important;
+}
+
+.modif_pp {
+  background-color: #013356;
+  color: white;
+  font-size: 16px;
+  padding: 5px;
+  opacity: 0.8;
 }

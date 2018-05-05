@@ -60,7 +60,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="modal_emploi">Publier un emploi</h5>
+                <h5 class="modal-title" id="modal_emploi">Publier une offre d'emploi</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -172,10 +172,32 @@
                   $bdd = new PDO('mysql:host=localhost;dbname=netpool;charset=utf8', 'root', '');
 
                   // Chercher si l'utilisateur existe déjà
-                  $requete = $bdd->prepare('SELECT DISTINCT * FROM publication AS p
-                                            WHERE ( p.id_publication IN (SELECT id_publication FROM publie WHERE id_utilisateur = ?)
-                                                    OR p.visibilite = "PUBLIC") AND type != "EMPLOI" ORDER BY id_publication DESC');
-                  $requete->execute(array($_SESSION['$id_utilisateur']));
+                  $requete = $bdd->prepare('SELECT DISTINCT * FROM publication AS p WHERE ( p.id_publication IN (SELECT id_publication FROM publie WHERE id_utilisateur = ?)
+                                                                                            OR p.visibilite = "PUBLIC"
+                                                                                            OR (
+                                                                                                  p.visibilite = "RESEAU"
+                                                                                                  AND (
+
+                                                                                                      (SELECT id_utilisateur FROM publie WHERE id_publication = p.id_publication) IN (SELECT utilisateur_1 FROM reseau WHERE utilisateur_2 = ?)
+
+                                                                                                    OR
+                                                                                                      (SELECT id_utilisateur FROM publie WHERE id_publication = p.id_publication) IN (SELECT utilisateur_2 FROM reseau WHERE utilisateur_1 = ?)
+
+                                                                                                  )
+                                                                                                )
+                                                                                            OR (
+                                                                                                  p.visibilite = "AMIS"
+                                                                                                  AND (
+
+                                                                                                      (SELECT id_utilisateur FROM publie WHERE id_publication = p.id_publication) IN (SELECT utilisateur_1 FROM reseau WHERE utilisateur_2 = ? AND check_ami="TRUE")
+
+                                                                                                    OR
+                                                                                                      (SELECT id_utilisateur FROM publie WHERE id_publication = p.id_publication) IN (SELECT utilisateur_2 FROM reseau WHERE utilisateur_1 = ? AND check_ami="TRUE")
+
+                                                                                                  )
+                                                                                                )
+                                                                                            AND type != "EMPLOI") ORDER BY id_publication DESC');
+                  $requete->execute(array($_SESSION['$id_utilisateur'],$_SESSION['$id_utilisateur'],$_SESSION['$id_utilisateur'],$_SESSION['$id_utilisateur'],$_SESSION['$id_utilisateur']));
 
 
                   while($resultat = $requete->fetch())

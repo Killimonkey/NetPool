@@ -21,13 +21,15 @@
         ?>
 
         <!-- pp -->
-        <div class="col-sm-12">
+        <div class="col-sm-12 container">
           <?php
             $pp = $_SESSION['$profil_utilisateur'];
             if($pp != "public/images/pp_template.jpg") echo '<img src="../upload/pp/'.$pp.'" class="img-responsive img-rounded img_pp" alt="img_pp">';
             else echo '<img src="../'.$pp.'" class="img-responsive img-rounded img_pp" alt="img_pp">';
           ?>
-
+          <div class="middle">
+              <button type="button" class="btn btn-primary modif_pp parametres_profil" data-toggle="modal" data-target="#modal_fic_pp">Modifier</button>
+          </div>
         </div>
       </div>
 
@@ -118,7 +120,6 @@
                   <div class="modal-body">
                     <button type="button" class="btn btn-primary parametres_profil" data-toggle="modal" data-target="#modal_fic_cv">Modifier mon CV</button>
                     <button type="button" class="btn btn-primary parametres_profil" data-toggle="modal" data-target="#modal_fic_couv">Modifier ma photo de couverture</button>
-                    <button type="button" class="btn btn-primary parametres_profil" data-toggle="modal" data-target="#modal_fic_pp">Modifier ma photo de profil</button>
                   </div>
 
 
@@ -361,25 +362,64 @@
                       </div>
                       <div class="col-sm-4">
                         <div class="row param_profil">
-                          <a href="supp_pub.php?data='.$id_publication.'"> <button type="button" class="btn btn-primary supprimer"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>
-                          <form>
-                            <div class="radio">
-                              <label><input type="radio" name="optradio">Public</label>
-                            </div>
-                            <div class="radio">
-                              <label><input type="radio" name="optradio">Réseau</label>
-                            </div>
-                            <div class="radio">
-                              <label><input type="radio" name="optradio">Amis</label>
-                            </div>
-                          </form>
-                        </div>
-                      </div>';
-                      if($aime == FALSE) echo '<a href="aime_moi.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart-empty"></span></button></a>';
+                          <a href="supp_pub.php?data='.$id_publication.'"> <button type="button" class="btn btn-primary supprimer"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>';
+                          if($visibilite=="PUBLIC")
+                          {
+                            echo ' <form action="../php/radio.php" method="post">
+                                <div class="radio">
+                                  <label><input type="radio" name="optradio" value="public" checked="">Public</label>
+                                </div>
+                                <div class="radio">
+                                  <label><input type="radio" name="optradio" value="reseau">Réseau</label>
+                                </div>
+                                <div class="radio">
+                                  <label><input type="radio" name="optradio" value="amis">Amis</label>
+                                </div>
+                                <input type="hidden" name="id_publi" value="'.$id_publication.'" >
+                                <input class="bouton_cv" type="submit" value="Ok">
+                              </form>';
+                          }
+                          if($visibilite=="RESEAU")
+                          {
+                            echo ' <form action="../php/radio.php" method="post">
+                                <div class="radio">
+                                  <label><input type="radio" name="optradio" value="public">Public</label>
+                                </div>
+                                <div class="radio">
+                                  <label><input type="radio" name="optradio" checked="" value="reseau">Réseau</label>
+                                </div>
+                                <div class="radio">
+                                  <label><input type="radio" name="optradio" value="amis">Amis</label>
+                                </div>
+                                <input type="hidden" name="id_publi" value="'.$id_publication.'" >
+                                <input class="bouton_cv" type="submit" value="Ok">
+                              </form>';
+                          }
+                          if($visibilite=="AMIS")
+                          {
+                            echo ' <form action="../php/radio.php" method="post">
+                                <div class="radio">
+                                  <label><input type="radio" name="optradio" value="public">Public</label>
+                                </div>
+                                <div class="radio">
+                                  <label><input type="radio" name="optradio" value="reseau">Réseau</label>
+                                </div>
+                                <div class="radio">
+                                  <label><input type="radio" name="optradio" value="amis" checked="">Amis</label>
+                                </div>
+                                <input type="hidden" name="id_publi" value="'.$id_publication.'" >
+                                <input class="bouton_cv" type="submit" value="Ok">
+                              </form>';
+                          }
+
+
+                      if($aime == FALSE) echo '<a href="aime_moi.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart-empty coeur_acceuil"></span></button></a>';
                       else echo '<a href="aime_plus_moi.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart coeur_acceuil"></span></button></a>';
                       echo '
                       <button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-edit"></span></button>
                       <button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-share"></span></button>
+                      </div>
+                    </div>
                       </li>
                       ';
 
