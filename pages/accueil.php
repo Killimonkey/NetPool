@@ -380,8 +380,34 @@
                       else echo '<a href="aime_plus.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart coeur_acceuil"></span></button></a>';
                       echo '
                       <button type="button" class="btn btn-primary option_publier col-sm-4" data-toggle="modal" data-target="#modal_commenter"><span class="glyphicon glyphicon-edit"></span></button>
-                      <a href="../php/partager.php?data='.$id_publication.'&amp;mec='.$utilisateur['id_utilisateur'].'"><button type="button" class="btn btn-primary option_publier col-sm-4" ><span class="glyphicon glyphicon-share"></span></button></a>
-                      </li>';
+                      <a href="../php/partager.php?data='.$id_publication.'&amp;mec='.$utilisateur['id_utilisateur'].'"><button type="button" class="btn btn-primary option_publier col-sm-4" ><span class="glyphicon glyphicon-share"></span></button></a>';
+
+                      // Récupérer les commentaires de la publication
+                      $commentaires = $bdd->prepare('SELECT * FROM commentaire WHERE id_commentaire IN (SELECT id_commentaire FROM est_ecrit_dans WHERE id_publication = ?)');
+                      $commentaires->execute(array($id_publication));
+
+                      echo '<div>';
+
+                      while($commentaires->fetch())
+                      {
+                        // Récupérer l'utilisateur auteur
+                        $requete_auteur = $bdd->prepare('SELECT id_utilisateur FROM ecrit WHERE id_commentaire = ?');
+                        $requete_auteur->execute(array($commentaire['id_commentaire']));
+                        $auteur = $requete_auteur->fetch();
+                        $requete_auteur = $bdd->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = ?');
+                        $requete_auteur->execute(array($auteur[0]));
+                        $auteur = $requete_auteur->fetch();
+                        $prenom_nom_auteur = strtolower($auteur['prenom'].' '.$auteur['nom']);
+                        $description_commentaire = $commentaire['description'];
+
+                        echo '
+                          <div>
+                            <p>par '.$prenom_nom_auteur.' : "'.$description_commentaire.'"</p>
+                          </div>
+                        ';
+                      }
+
+                      echo '</div></li>';
                     }
 
                   }
