@@ -270,8 +270,8 @@
                     if($aime == FALSE) echo '<a href="aime.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart-empty coeur_acceuil"></span></button></a>';
                     else echo '<a href="aime_plus.php?data='.$id_publication.'"><button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-heart coeur_acceuil"></span></button></a>';
                     echo '
-                    <button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-edit"></span></button>
-                    <button type="button" class="btn btn-primary option_publier col-sm-4"><span class="glyphicon glyphicon-share"></span></button>
+                    <button type="button" class="btn btn-primary option_publier col-sm-4" data-toggle="modal" data-target="#modal_commenter"><span class="glyphicon glyphicon-edit"></span></button>
+                    <button type="button" class="btn btn-primary option_publier col-sm-4" data-toggle="modal" data-target="#modal_partager"><span class="glyphicon glyphicon-share"></span></button>
                     </li>';
 
                 }
@@ -284,6 +284,66 @@
                 ?>
 
         </ul>
+
+        <!-- Commenter -->
+        <div class="modal fade" id="modal_commenter" tabindex="-1" role="dialog" aria-labelledby="modal_commenter" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modal_commenter">Commenter la publication</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <form action="../php/partager.php" method="post">
+
+                <div class="modal-body">
+                  <!-- Commentaire -->
+                  <div class="form-group">
+                  <label for="commentaire">Commentaire :</label>
+                  <input type="text" name="commentaire" class="form-control" required>
+                  </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                  <input type="submit" value="Commenter" class="btn btn-primary"></input>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Partager -->
+        <div class="modal fade" id="modal_event" tabindex="-1" role="dialog" aria-labelledby="modal_event" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modal_event">Publier un événement</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <form action="../php/publication_event.php" method="post">
+
+                <div class="modal-body">
+                  <!-- Commentaire -->
+                  <div class="form-group">
+                  <label for="comment_event">Description :</label>
+                  <input type="text" name="comment_event" class="form-control" required>
+                  </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                  <input type="submit" value="Publier" class="btn btn-primary"></input>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
 
         </div>
 
